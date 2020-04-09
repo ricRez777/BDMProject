@@ -255,8 +255,7 @@ body{
   }
 
 /*------------FORM USER REGISTER--------------------*/
-
-.formRegisterUse{
+.formRegisterNews, .formRegisterUse{
     width: 80%;
     margin: 2.35% auto;
     display: flex;
@@ -274,10 +273,22 @@ body{
     align-items: flex-start;
     margin: 3% 4%;
     color: white;
+    width: 100%;
 }
 
 .divInputs .btn-Secondary{
     margin: auto;
+}
+
+/*----------FORM NEWS REGISTER--------------------*/
+
+.formRegisterNews input{
+    text-align: start;
+}
+
+.formRegisterNews input[type="submit"]{
+    text-align: center;
+    margin-left: 0;
 }
 
 /*-----------------Login------------------*/
@@ -352,6 +363,7 @@ body{
     font-size: 15px;
     text-align: center;
     margin: 3% auto;
+    margin-top: 0;
 }
 
 .textBlack{
@@ -371,6 +383,18 @@ body{
 
 .containerLogin h1{
     margin: 3%;
+}
+
+.btn-Primary:hover{
+    background-color: #ffffff;
+    color: #2b2b28;
+    border: solid #2b2b28 1px;
+}
+
+.btn-Secondary:hover{
+    background-color: #2b2b28;
+    color: #ffffff;
+    border: solid #ffffff 1px;
 }
 /*---------------------Carousel--------------------*/
 *{
