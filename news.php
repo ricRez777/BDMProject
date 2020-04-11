@@ -14,13 +14,21 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php include("components/sidebar.php") ?>
-        <div>
-            <?php 
-            include("components/header.php");
-            include("components/maincategories.php");
-            ?>
+    <?php include("components/header.php"); ?>
+    <div class="container-row">
+
+        <div class="sidenav-area">
+            <?php include("components/sidebar.php"); ?>
+        </div>
+
+        <div class="content-area">
+
+            <div class="container">
+                <?php 
+                    include("components/maincategories.php");
+                ?>
+            </div>
+        
             <div class="containerNews">
                 <div>
                     <h1>Titulo de la noticia</h1>
@@ -66,7 +74,6 @@
                 </div>
                 <?php include("components/breakingNews.php") ?>
             </div>
-            <?php include("components/footer.php") ?>
         </div>
     </div>
 </body>

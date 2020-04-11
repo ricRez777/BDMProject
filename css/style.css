@@ -22,7 +22,7 @@ body{
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
-    margin: auto 5%;
+    /*margin: auto 5%;*/
 }
 
 .row{
@@ -34,6 +34,10 @@ body{
     margin: auto 5%;
 }
 
+.content-area{
+    width: 82%;
+}
+
 /*-------------------HEADER-------------------*/
 .header{
     background-color: #2b2b28;
@@ -43,6 +47,8 @@ body{
     padding: 5px 10%;
     margin: auto;
     width: 100%;
+    position: fixed;
+    z-index: 1;
 }
 /*Logo*/
 .logo{
@@ -72,6 +78,7 @@ body{
 /*----------------Main Categories---------------------------*/
 .MainCategories{
     margin:auto;
+    margin-top: 3%;
     background-color: #f8f8f8;
 }
 .MainCategories li {
@@ -108,7 +115,7 @@ body{
     flex-direction: row;
     align-items: flex-start;
     text-align: start;
-    margin: auto 10%;
+    margin: auto 5%;
 }
 
 .breakingNews{
@@ -274,57 +281,94 @@ a:hover{
 /*------------------SIDEBAR-----------------*/
 
 /* The sidebar menu */
+.sidenav-area{ 
+    width: 18%;
+}
+
+.menu{
+    margin-top: 20%;
+}
+
+.menu .container-row{
+    margin-left: 5%;
+    font-size: 10px;
+}
+
+.menu .container-row div{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.menu img{
+    border-radius: 20%;
+}
+
 .sidenav {
     height: 100%;
-    width: 15%;
-    position: fixed;
-    z-index: 1;
-    background-color: #111; /* Black */
-    overflow-x: hidden;
+    width: 18%;
+    background-color: #2b2b28;
     text-align: start;
-    display: none;
     color: white;
+    position: fixed;
   }
 
-  .sidenav .logo{
-      text-align: center;
-  }
+.sidenav a{
+    color: #ffffff;
+}
   
-  /* The navigation menu links */
-  /*.sidenav li {
-    margin: 10px auto;
+.sidenav li {
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }*/
+    font-size: 20px;
+    padding: 5% 25%;
+    padding-left: 5%;
+}
 
-  .side-toggle{
-      display: block;
-      margin: auto 25%;
-      cursor: pointer;
-      text-align: center;
-      font-size: 20px;
-      color: #ffffff;
-  }
+.sidenav li:hover{
+    background-color: #1E1E1D;
+}
 
-  .side-toggle:before{
-      content: '\f0c9';
-      font-family: fontAwesome;
-      line-height: 40px;
-  }
+.data-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#menu * { 
+    list-style:none;
+    cursor: pointer;
+}
+#menu li{ 
+    line-height:180%;
+}
+
+#menu li ul li:hover{
+    background-color: #080808;
+}
+#menu input[name="list"] {
+	position: absolute;
+	left: -1000em;
+	}
+#menu .interior{
+    display: none;
+}
+#menu input:checked ~ ul{
+    display:block;
+}
+
 
 /*------------FORM USER REGISTER--------------------*/
+
 .formRegisterNews, .formRegisterUse{
     width: 80%;
-    margin: 2.35% auto;
+    margin: 5% auto;
     display: flex;
     flex-direction: row;
     background-color: #2b2b28;
 }
 
 .formRegisterUse img{
-    margin: 9% auto;
+    margin: 9% 5%;
 }
 
 .divInputs{

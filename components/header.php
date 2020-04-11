@@ -1,6 +1,5 @@
 <header class="header">
     <div  class="header-sidebar">
-        <div class="side-toggle"></div>
         <a class="logo" href="index.php"><img src="img/Logo.png" width="60" alt="no image"></a>
     </div>
     <form class="formSearch" action="section-results.php">

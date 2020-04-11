@@ -18,13 +18,20 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php include("components/sidebar.php") ?>
-        <div>
-            <?php 
-                include("components/header.php");
+    <?php include("components/header.php"); ?>
+    <div class="container-row">
+        
+        <div class="sidenav-area">
+            <?php include("components/sidebar.php"); ?>
+        </div>
+        
+        <div class="content-area">
+
+        <div class="container">
+            <?php
                 include("components/maincategories.php");
             ?>
+        </div>
 
             <!-- Tab links -->
             <div class="tab">

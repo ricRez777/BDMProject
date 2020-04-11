@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php include("components/header.php"); ?>
+    <?php include("components/header.php"); ?>
+    <div class="container-row">
 
         <form class="formRegisterUse" action="" Method="Post">
             
@@ -44,7 +44,7 @@
             </div>
             <img src="img/register.jpg" width="500" height="400" alt="">
         </form>
-        <?php include("components/footer.php") ?>
+
     </div>
 
 </body>

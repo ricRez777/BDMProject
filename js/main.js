@@ -1,11 +1,4 @@
 $(document).ready(function(){
-    $('.side-toggle').on('click', function(){
-        $('.sidenav').toggle();
-    });
-
-    $('.btn-Reply').click(function(){
-        $('.form-Comment').toggle();
-    });
 
     //-------------------------------CAROUSEL----------------------------
     var imgItems = $('.slider li').length; // Numero de Slides

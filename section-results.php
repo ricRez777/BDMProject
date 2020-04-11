@@ -11,13 +11,21 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    <div class="container">
-        <?php include("components/sidebar.php") ?>
-        <div>
-            <?php 
-                include("components/header.php");
-                include("components/maincategories.php");
-            ?>
+    <?php include("components/header.php"); ?>
+    <div class="container-row">
+
+        <div class="sidenav-area">
+            <?php include("components/sidebar.php"); ?>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="container">
+                <?php 
+                    include("components/maincategories.php");
+                ?>
+            </div>
+            
             <br>
             <h3>Name Section</h3>
             <section class="containerNewsPrev">
@@ -85,7 +93,7 @@
                         libero dicta.</p>
                 </article>
             </section>
-            <?php include("components/footer.php") ?>
+
         </div>
     </div>
 </body>

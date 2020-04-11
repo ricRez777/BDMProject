@@ -17,13 +17,22 @@
 </head>
 
 <body>
-    <div class="container">
-        <?php include("components/sidebar.php") ?>
-        <div>
-            <?php 
-                include("components/header.php");
-                include("components/maincategories.php");
-            ?>
+    
+    <?php include("components/header.php"); ?>
+    <div class="container-row">
+        
+        <div class="sidenav-area">
+            <?php include("components/sidebar.php"); ?>
+        </div>
+        
+        <div class="content-area">
+
+            <div class="container">
+                <?php 
+                    include("components/maincategories.php");
+                ?>
+            </div>
+            
             <section id="Images" class="images-cards">
                 <form action="" method="post" class="formRegisterNews" enctype="multipart/form-data">
                     <div class="divInputs">
@@ -76,8 +85,6 @@
                     </div>
                 </form>
             </section>
-
-            <?php include("components/footer.php") ?>
         </div>
     </div>
     <script src="js/modal.js"></script>
