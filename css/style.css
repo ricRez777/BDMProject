@@ -115,11 +115,11 @@ body{
     flex-direction: row;
     align-items: flex-start;
     text-align: start;
-    margin: auto 5%;
+    margin: auto 1%;
 }
 
 .breakingNews{
-    margin: 1% 10%;
+    margin: 1% 1%;
     border: solid 1px black;
     padding: 20px;
 }
