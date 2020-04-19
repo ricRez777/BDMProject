@@ -20,7 +20,7 @@
     <div class="container-row">
 
         <div class="sidenav-area">
-            <?php include("components/sidebar.php"); ?>
+            <?php include("components/sidebar_admin.php"); ?>
         </div>
 
         <div class="content-area">

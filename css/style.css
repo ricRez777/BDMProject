@@ -359,7 +359,7 @@ a:hover{
 
 /*------------FORM USER REGISTER--------------------*/
 
-.formRegisterNews, .formRegisterUse{
+.formSection, .formRegisterJournalist, .formRegisterNews, .formRegisterUse{
     width: 80%;
     margin: 5% auto;
     display: flex;
@@ -382,6 +382,30 @@ a:hover{
 
 .divInputs .btn-Secondary{
     margin: auto;
+}
+
+/*---------FORM JOURNALIST REGISTER---------------*/
+.container-sectionform{
+    width: 45%;
+    margin-right: 2%;
+}
+
+.list-user{
+    width:50%;
+}
+
+.formRegisterJournalist{
+    margin: 0px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    width: 45%;
+}
+
+.formSection{
+    margin: 0px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    width: 100%;
 }
 
 /*----------FORM NEWS REGISTER--------------------*/
@@ -435,7 +459,7 @@ a:hover{
     margin: 2% auto;
 }
 
-/*----------------------------------------------*/
+/*---------------------------GENERAL-------------------*/
 .btn-Primary{
     background-color: #2b2b28;
     color: #f8f8f8;
