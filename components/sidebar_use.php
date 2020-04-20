@@ -7,6 +7,7 @@
             <div>
                 <h3>User name</h3>
                 <p>user@dominio.com</p>
+                <p><a href="user_modify.php">MODIFY</a></p>
                 <p><a href="">EXIT</a></p>
             </div>
         </div>

@@ -35,13 +35,13 @@
 
             <!-- Tab links -->
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'Edition')" id="defaultOpen">News finished</button>
+                <button class="tablinks" onclick="openTab(event, 'Finished')" id="defaultOpen">News finished</button>
                 <button class="tablinks" onclick="openTab(event, 'Users')">Users</button>
                 <button class="tablinks" onclick="openTab(event, 'Sections')">Sections</button>
             </div>
 
             <!-- Tab content -->
-            <div id="Edition" class="tabcontent">
+            <div id="Finished" class="tabcontent" style="display:block">
                 <article class="row article-Dashboard">
                     <a href="news_in_edition.php">
                         <h3>News name</h3>
@@ -50,11 +50,17 @@
                         adipisicing
                         elit. Description of the news</p>
                     <p><span><strong>Location: </strong></span> Apodaca, Nuevo León</p>
-
+                    
                     <form action="" style="width:50%;" method="post">
                         <input type="text" hidden name="idNew">
                         <input type="submit" class="btn-Primary" value="Confirm">
                     </form>
+                    <br>    
+                    <form action="" style="width:50%;" method="post">
+                        <input type="text" hidden name="idNew">
+                        <input type="submit" class="btn-Primary" value="Refuse">
+                    </form>
+                
                     <br>
                 </article>
                 <hr>
@@ -71,6 +77,11 @@
                     <form action="" style="width:50%;" method="post">
                         <input type="text" hidden name="idNew">
                         <input type="submit" class="btn-Primary" value="Confirm">
+                    </form>
+                    <br>    
+                    <form action="" style="width:50%;" method="post">
+                        <input type="text" hidden name="idNew">
+                        <input type="submit" class="btn-Primary" value="Refuse">
                     </form>
                     <br>
                 </article>
@@ -83,6 +94,18 @@
                         <div class="divInputs">
                             <h1>Register Journalist</h1>
 
+                            <label for="Name" class="formLabel">Name</label>
+                            <input type="text" name="Name" placeholder="Name" class="formText">
+
+                            <label for="LastName" class="formLabel">Last Name</label>
+                            <input type="text" name="LastName" placeholder="Last Name" class="formText">
+
+                            <label for="Phone" class="formLabel">Phone</label>
+                            <input type="number" name="Phone" placeholder="Phone" class="formText">
+
+                            <label for="Firm" class="formLabel">Firm</label>
+                            <input type="text" name="Firm" placeholder="Firm" class="formText">
+                            
                             <label for="Email" class="formLabel">E-mail</label>
                             <input type="e-mail" name="Email" placeholder="Email" class="formText">
                             
@@ -139,7 +162,7 @@
                 </div>
             </div>
 
-            <div id="Sections" class="tabcontent" style="display:block">
+            <div id="Sections" class="tabcontent">
                 <div class="container-row">
                     <div class="container-sectionform">
                         <form class="formSection" action="" Method="Post">

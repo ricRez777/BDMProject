@@ -37,9 +37,6 @@
                 <label for="Phone" class="formLabel">Cel Phone</label>
                 <input type="number" name="Phone" placeholder="Phone" class="formText">
                 
-                <label for="UserName" class="formLabel">UserName</label>
-                <input type="text" name="UserName" placeholder="User Name" class="formText">
-                
                 <label for="Pass" class="formLabel">Password</label>
                 <input type="password" name="Pass" placeholder="Password" class="formText">
                 
