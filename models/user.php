@@ -31,7 +31,7 @@
         }
 
         /*registro de usuarios*/
-        function InsertUser(){
+        function Insert_User(){
             $this->objConection->conexion();
             $query = "CALL usuarios_SP(0, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'INSERT')";
             $resultado = $this->objConection->cone->query($query);
@@ -45,6 +45,36 @@
 			}
         }
 
+
+        /*modificacion de usuarios*/
+        function Update_User(){
+            $this->objConection->conexion();
+            $query = "CALL usuarios_SP($this->id_Use, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'UPDATE')";
+            $resultado = $this->objConection->cone->query($query);
+            if($resultado){
+				$this->objConection->disconnect();
+				return true; 
+			}
+			else{
+				$this->objConection->disconnect();
+				return false; 	
+			}
+        }
+
+        /*baja de usuarios*/
+        function Delete_User(){
+            $this->objConection->conexion();
+            $query = "CALL usuarios_SP($this->id_Use, '', '', '', '', '', null, '', true, 'DELETE')";
+            $resultado = $this->objConection->cone->query($query);
+            if($resultado){
+				$this->objConection->disconnect();
+				return true; 
+			}
+			else{
+				$this->objConection->disconnect();
+				return false; 	
+			}
+        }
 
 
         /*Get de los atributos*/
