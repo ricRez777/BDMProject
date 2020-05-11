@@ -23,7 +23,7 @@
                     exit();
                   }
                   else{
-                      echo "conection success";
+                      //echo "conection success";
                   }
             }
             catch(Exception $e){
@@ -33,13 +33,8 @@
 
         function disconnect(){
             $this->cone->close();
-            echo "conection close";
+            //echo "conection close";
         }
 
     }
-
-    $varPrueba = new Conection();
-    $varPrueba->conexion();
-    
-    $varPrueba->disconnect();
 ?>

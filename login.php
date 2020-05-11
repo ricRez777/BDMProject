@@ -18,7 +18,7 @@
         <div class="containerLogin">
             <h1>World News Center</h1>
             <p class="formLabel">You are new? <a href="user_register.php">Register now</a></p>
-            <form action="index.php" method="Post">
+            <form action="controllers/user_login.php" method="Post">
                 <input type="text" name="Email" placeholder="Email" class="formText">
                 <input type="password" name="Pass" placeholder="Password" class="formText">
                 <input type="submit" value="Enter" class="btn-Primary">

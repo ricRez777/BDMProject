@@ -22,7 +22,7 @@
             $this->type_use = $type_useP;
             $this->email = $emailP;
             $this->pass = $passP;
-            $this->nameComplate = $nameComplateP;
+            $this->nameComplate = $nameComplateP; 
             $this->$phone = $phoneP;
             $this->profilePicture = $profilePictureP;
             $this->firm = $firmP;
@@ -31,7 +31,7 @@
         }
 
         /*registro de usuarios*/
-        function Insert_User(){
+        public function Insert_User(){
             $this->objConection->conexion();
             $query = "CALL usuarios_SP(0, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'INSERT')";
             $resultado = $this->objConection->cone->query($query);
@@ -45,9 +45,8 @@
 			}
         }
 
-
         /*modificacion de usuarios*/
-        function Update_User(){
+        public function Update_User(){
             $this->objConection->conexion();
             $query = "CALL usuarios_SP($this->id_Use, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'UPDATE')";
             $resultado = $this->objConection->cone->query($query);
@@ -62,7 +61,7 @@
         }
 
         /*baja de usuarios*/
-        function Delete_User(){
+        public function Delete_User(){
             $this->objConection->conexion();
             $query = "CALL usuarios_SP($this->id_Use, '', '', '', '', '', null, '', true, 'DELETE')";
             $resultado = $this->objConection->cone->query($query);
@@ -76,6 +75,24 @@
 			}
         }
 
+        /*Inicio de sesion*/
+        public function Login_User(){
+			$this->objConection->conexion();
+			$query = "CALL usuarios_SP(0, '', '$this->email', '$this->pass', '', '', '', '', '', 'LOGIN')";
+			$resultado = $this->objConection->cone->query($query);
+
+			$fila = $resultado->fetch_assoc();
+			if($resultado->num_rows > 0){
+				$this->objConection->disconnect();
+				return true;
+			}
+			else{
+				echo "Correo: " . $this->email . "<br>";
+                echo "Contraseña: " . $this->pass . "<br>";
+				$this->objConection->disconnect();
+				return false;
+			}
+		}
 
         /*Get de los atributos*/
         function getIdUse(){
