@@ -10,7 +10,14 @@
     $objLogin = new user("", "", $email, $pass, "", "", "", "");
 
     if($objLogin->Login_User()){
-		header('Location: ../index.php');
+      $_SESSION['Type_Use'] = $objLogin->getType_use();
+      $_SESSION['idUse'] = $objLogin->getIdUse();
+      $_SESSION['Name'] = $objLogin->getnameComplate();
+      $_SESSION['Email'] = $objLogin->getEmail();
+      $_SESSION['Id_Use'] = $objLogin->getIdUse();
+
+      header('Location: ../index.php');
+    
 	}
 	else{
 		echo "Acceso denegado";

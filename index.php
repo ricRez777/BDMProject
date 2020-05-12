@@ -20,7 +20,24 @@
     <div class="container-row">
 
         <div class="sidenav-area">
-            <?php include("components/sidebar_journalist.php"); ?>
+            <?php 
+                session_start();
+                if( !isset($_SESSION['Type_Use'])){
+                    /*Para cuando no esta logeado nadie*/
+                    include("components/sidebar_no_register.php");
+                }
+                else{
+                    if($_SESSION['Type_Use'] == "ADMIN"){
+                        include("components/sidebar_admin.php");
+                    }
+                    else if($_SESSION['Type_Use'] == "JOURNALIST"){
+                        include("components/sidebar_journalist.php");
+                    }
+                    else if($_SESSION['Type_Use'] == "USER"){
+                        include("components/sidebar_use.php");
+                    }
+                }
+            ?>
         </div>
 
         <div class="content-area">

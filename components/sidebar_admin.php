@@ -1,14 +1,14 @@
-<div class="sidenav">
+<?php ?>
 
+<div class="sidenav">
     <div class="menu">
         <hr>
         <div class="container-row">
             <img src="img/newsPrev.jpg" width=100 alt="no image">
             <div>
-                <h3>User name</h3>
-                <p>user@dominio.com</p>
+                <h3> <?php echo $_SESSION['Name']; ?> </h3>
+                <p> <?php echo $_SESSION['Email']; ?> </p>
                 <p><a href="journalist_modify.php">MODIFY</a></p>
-                <p><a href="">EXIT</a></p>
             </div>
         </div>
         <hr>

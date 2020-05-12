@@ -18,7 +18,7 @@
         /*Constructor*/
         function __construct($id_UseP, $type_useP, $emailP, $passP, $nameComplateP, $phoneP, $profilePictureP, $firmP){
             
-            $this->id_USe = $id_UseP;
+            $this->id_Use = $id_UseP;
             $this->type_use = $type_useP;
             $this->email = $emailP;
             $this->pass = $passP;
@@ -83,6 +83,14 @@
 
 			$fila = $resultado->fetch_assoc();
 			if($resultado->num_rows > 0){
+
+                $this->email = $fila['email'];
+                $this->pass = $fila['pass'];
+                $this->type_use = $fila['type_use'];
+                $this->profilePicture = $fila['profilePicture'];
+                $this->nameComplate = $fila['nameComplete'];
+                $this->id_Use = $fila['id_Use'];
+
 				$this->objConection->disconnect();
 				return true;
 			}
