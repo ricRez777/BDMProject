@@ -92,7 +92,7 @@
 
             <div id="Users" class="tabcontent">
                 <div class="container-row">
-                    <form class="formRegisterJournalist" action="" Method="Post">
+                    <form class="formRegisterJournalist" action="" Method="Post" enctype="multipart/form-data">
                         <div class="divInputs">
                             <h1>Register Journalist</h1>
 
@@ -116,8 +116,8 @@
 
                             <label for="Role" class="formLabel">Role</label>
                             <select name="Role" class="formText">
-                                <option value="Admin">Admin</option>
-                                <option value="Journalist">Journalist</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="JOURNALIST">Journalist</option>
                             </select>
                             
                             <section id="Images" class="images-cards">
