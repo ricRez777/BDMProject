@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <header class="header">
     <div  class="header-sidebar">
         <a class="logo" href="index.php"><img src="img/Logo.png" width="60" alt="no image"></a>

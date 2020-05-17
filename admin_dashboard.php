@@ -92,7 +92,7 @@
 
             <div id="Users" class="tabcontent">
                 <div class="container-row">
-                    <form class="formRegisterJournalist" action="" Method="Post" enctype="multipart/form-data">
+                    <form class="formRegisterJournalist" action="controllers/user_insert.php" Method="Post" enctype="multipart/form-data">
                         <div class="divInputs">
                             <h1>Register Journalist</h1>
 

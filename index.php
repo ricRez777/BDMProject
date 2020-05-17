@@ -21,7 +21,6 @@
 
         <div class="sidenav-area">
             <?php 
-                session_start();
                 if( !isset($_SESSION['Type_Use'])){
                     /*Para cuando no esta logeado nadie*/
                     include("components/sidebar_no_register.php");

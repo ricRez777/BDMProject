@@ -23,7 +23,7 @@
             $this->email = $emailP;
             $this->pass = $passP;
             $this->nameComplate = $nameComplateP; 
-            $this->$phone = $phoneP;
+            $this->phone = $phoneP;
             $this->profilePicture = $profilePictureP;
             $this->firm = $firmP;
 
@@ -33,14 +33,16 @@
         /*registro de usuarios*/
         public function Insert_User(){
             $this->objConection->conexion();
-            $query = "CALL usuarios_SP(0, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'INSERT')";
+            $query = "CALL usuarios_SP(0, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', '$this->profilePicture', '$this->firm', 1, 'INSERT')";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
-				$this->objConection->disconnect();
+                $this->objConection->disconnect();
+                echo "SI se inserto";
 				return true; 
 			}
 			else{
-				$this->objConection->disconnect();
+                $this->objConection->disconnect();
+                echo "NO se inserto";
 				return false; 	
 			}
         }

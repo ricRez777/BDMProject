@@ -1,4 +1,3 @@
-<?php ?>
 
 <div class="sidenav">
     <div class="menu">
