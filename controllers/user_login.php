@@ -15,6 +15,7 @@
       $_SESSION['Name'] = $objLogin->getnameComplate();
       $_SESSION['Email'] = $objLogin->getEmail();
       $_SESSION['Id_Use'] = $objLogin->getIdUse();
+      $_SESSION['Photo'] = $objLogin->getProfilePicture();
 
       header('Location: ../index.php');
     
