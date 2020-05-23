@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +18,10 @@
 </head>
 
 <body>
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        require_once ("models/user.php");
+    ?>
     <div class="container-row">
 
         <div class="sidenav-area">
@@ -92,7 +93,7 @@
 
             <div id="Users" class="tabcontent">
                 <div class="container-row">
-                    <form class="formRegisterJournalist" action="controllers/user_insert.php" Method="Post" enctype="multipart/form-data">
+                    <form class="formRegisterJournalist" action="controllers/user_insert.php" method="Post" enctype="multipart/form-data">
                         <div class="divInputs">
                             <h1>Register Journalist</h1>
 
@@ -116,10 +117,10 @@
 
                             <label for="Role" class="formLabel">Role</label>
                             <select name="Role" class="formText">
-                                <option value="ADMIN">Admin</option>
                                 <option value="JOURNALIST">Journalist</option>
+                                <option value="ADMIN">Admin</option>
                             </select>
-                            
+
                             <section id="Images" class="images-cards">
                                 <label for="image">Profile Picture</label>
                                 <div class="row-container">
@@ -127,7 +128,7 @@
                                         <div class="add-new-photo first" id="add-photo">
                                             <span><i class="icon-camera"></i></span>
                                         </div>
-                                        <input type="file" id="add-new-photo" name="image">
+                                        <input type="file" id="add-new-photo" name="image-photo">
                                     </div>
                                 </div>
                             </section>
@@ -139,26 +140,10 @@
                     <div class="list-user">
                         <h3>Registered users:</h3>
                         <br>
-                        <article class="row article-Dashboard">
-                            <h3>user@dominio.com</h3>
-                            <p><span><strong>Firm: </strong></span>Lolo el de la guitarra</p>
-                            <p><span><strong>Nombre: </strong></span>Miranda guitarra loca</p>
-                            <form action="" style="width:100%;" method="post">
-                            <input type="submit" class="btn-Primary" value="Delete">
-                            </form>
-                            <br>
-                        </article>
-                        <hr>
-                        <article class="row article-Dashboard">
-                            <h3>user@dominio.com</h3>
-                            <p><span><strong>Firm: </strong></span>Lolo el de la guitarra</p>
-                            <p><span><strong>Nombre: </strong></span>Miranda guitarra loca</p>
-                            <form action="" style="width:100%;" method="post">
-                            <input type="submit" class="btn-Primary" value="Delete">
-                            </form>
-                            <br>
-                        </article>
-                        <hr>
+                        <?php 
+                            $objJournalist = new user("", "", "", "", "", "", "", "");
+                            $objJournalist->get_All_Journalist();
+                        ?>
                     </div>
                     
                 </div>

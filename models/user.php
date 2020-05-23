@@ -47,10 +47,48 @@
 			}
         }
 
+        /*Select para obtener todos los periodistas*/
+        public function get_All_Journalist(){
+            $this->objConection->conexion();
+            $query = "CALL usuarios_SP(0, '', '', '', '', '', '', '', '', 'LIST_JOURNALIST')";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){
+                ?>
+                <article class="row article-Dashboard">
+                    <h3> <?php echo $row['email']; ?> </h3>
+                    <p><span><strong>Firm: </strong></span> <?php echo $row['firm']; ?> </p>
+                    <p><span><strong>Name: </strong></span> <?php echo $row['nameComplete']; ?> </p>
+                    <p><span><strong>Phone: </strong></span> <?php echo $row['phone']; ?> </p>
+                    <form action="" style="width:100%;" method="post">
+                        <input type="text" hidden value="<?php echo $row['id_Use']; ?>">
+                        <input type="submit" class="btn-Primary" value="Delete">
+                    </form>
+                    <br>
+                </article>
+                <hr>
+                <?php
+            }
+        }
+
         /*modificacion de usuarios*/
         public function Update_User(){
             $this->objConection->conexion();
-            $query = "CALL usuarios_SP($this->id_Use, '$this->type_use', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', $this->profilePicture, '$this->firm', true, 'UPDATE')";
+            $query = "CALL usuarios_SP($this->id_Use, 'JOURNALIST', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', '$this->profilePicture', '$this->firm', 1, 'UPDATE')";
+            $resultado = $this->objConection->cone->query($query);
+            if($resultado){
+				$this->objConection->disconnect();
+				return true; 
+			}
+			else{
+				$this->objConection->disconnect();
+				return false; 	
+			}
+        }
+
+        /*modificacion de usuarios sin cambiar la foto de perfil*/
+        public function Update2_User(){
+            $this->objConection->conexion();
+            $query = "CALL usuarios_SP($this->id_Use, 'JOURNALIST', '$this->email', '$this->pass', '$this->nameComplate', '$this->phone', '', '$this->firm', 1, 'UPDATE2')";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
 				$this->objConection->disconnect();
@@ -92,6 +130,8 @@
                 $this->profilePicture = $fila['profilePicture'];
                 $this->nameComplate = $fila['nameComplete'];
                 $this->id_Use = $fila['id_Use'];
+                $this->firm = $fila['firm'];
+                $this->phone = $fila['phone'];
 
 				$this->objConection->disconnect();
 				return true;
