@@ -59,8 +59,8 @@
                     <p><span><strong>Firm: </strong></span> <?php echo $row['firm']; ?> </p>
                     <p><span><strong>Name: </strong></span> <?php echo $row['nameComplete']; ?> </p>
                     <p><span><strong>Phone: </strong></span> <?php echo $row['phone']; ?> </p>
-                    <form action="" style="width:100%;" method="post">
-                        <input type="text" hidden value="<?php echo $row['id_Use']; ?>">
+                    <form action="controllers/journalist_delete.php" style="width:100%;" method="post">
+                        <input type="text" hidden name="id_Journalist" value="<?php echo $row['id_Use']; ?>">
                         <input type="submit" class="btn-Primary" value="Delete">
                     </form>
                     <br>
