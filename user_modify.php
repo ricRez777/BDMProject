@@ -32,24 +32,24 @@
                     include("components/maincategories.php");
                 ?>
 
-                <form class="formRegisterJournalist formModifyJournalist" action="" Method="Post">
+                <form class="formRegisterJournalist formModifyJournalist" action="controllers/reader_update.php" Method="Post" enctype="multipart/form-data">
                     <div class="divInputs">
                         <h1>User Journalist</h1>
 
                         <label for="Name" class="formLabel">Name</label>
-                        <input type="text" name="Name" placeholder="Name" class="formText">
-
-                        <label for="LastName" class="formLabel">Last Name</label>
-                        <input type="text" name="LastName" placeholder="Last Name" class="formText">
+                        <input type="text" name="Name" placeholder="Name" class="formText" value="<?php echo $_SESSION['Name'] ?>">
 
                         <label for="Phone" class="formLabel">Phone</label>
-                        <input type="number" name="Phone" placeholder="Phone" class="formText">
+                        <input type="number" name="Phone" placeholder="Phone" class="formText" value="<?php echo $_SESSION['phone'] ?>">
                         
                         <label for="Email" class="formLabel">E-mail</label>
-                        <input type="e-mail" name="Email" placeholder="Email" class="formText">
+                        <input type="e-mail" name="Email" placeholder="Email" class="formText" value="<?php echo $_SESSION['Email'] ?>">
                         
                         <label for="Pass" class="formLabel">Password</label>
-                        <input type="password" name="Pass" placeholder="Password" class="formText">
+                        <input type="password" name="Pass" placeholder="Password" class="formText" value="<?php echo $_SESSION['Pass'] ?>">
+
+                        <label for="Image">You Profile picture</label>
+                        <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Photo']) ?>" width=200 >
                         
                         <section id="Images" class="images-cards">
                             <label for="image">Profile Picture</label>
@@ -63,7 +63,7 @@
                             </div>
                         </section>
 
-                        <input type="submit" value="Register now!" class="btn-Secondary">
+                        <input type="submit" value="Modify now!" class="btn-Secondary">
                     </div>
                 </form>
             </div>

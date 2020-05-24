@@ -3,12 +3,11 @@
     <div class="menu">
         <hr>
         <div class="container-row">
-            <img src="img/newsPrev.jpg" width=100 alt="no image">
+        <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Photo']) ?>" width=100 >
             <div>
-                <h3>User name</h3>
-                <p>user@dominio.com</p>
+                <h3><?php echo $_SESSION['Name']; ?></h3>
+                <p><?php echo $_SESSION['Email']; ?></p>
                 <p><a href="user_modify.php">MODIFY</a></p>
-                <p><a href="">EXIT</a></p>
             </div>
         </div>
         <hr>

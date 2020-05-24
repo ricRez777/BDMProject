@@ -32,7 +32,7 @@
                     else if($_SESSION['Type_Use'] == "JOURNALIST"){
                         include("components/sidebar_journalist.php");
                     }
-                    else if($_SESSION['Type_Use'] == "USER"){
+                    else if($_SESSION['Type_Use'] == "READER"){
                         include("components/sidebar_use.php");
                     }
                 }

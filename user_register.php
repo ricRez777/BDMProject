@@ -21,7 +21,7 @@
     <?php include("components/header.php"); ?>
     <div class="container-row">
 
-        <form class="formRegisterUse" action="" Method="Post">
+        <form class="formRegisterUse" action="controllers/reader_insert.php" Method="Post" enctype="multipart/form-data">
             
             <div class="divInputs">
                 <h1>Register</h1>
@@ -31,11 +31,11 @@
                 <label for="LastName" class="formLabel">Last Name</label>
                 <input type="text" name="LastName" placeholder="Last Name" class="formText">
                 
-                <label for="Email" class="formLabel">E-mail</label>
-                <input type="e-mail" name="Email" placeholder="Email" class="formText">
-
                 <label for="Phone" class="formLabel">Cel Phone</label>
                 <input type="number" name="Phone" placeholder="Phone" class="formText">
+
+                <label for="Email" class="formLabel">E-mail</label>
+                <input type="e-mail" name="Email" placeholder="Email" class="formText">
                 
                 <label for="Pass" class="formLabel">Password</label>
                 <input type="password" name="Pass" placeholder="Password" class="formText">
