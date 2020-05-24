@@ -21,6 +21,8 @@
     <?php 
         include("components/header.php"); 
         require_once ("models/user.php");
+        require_once ("models/section.php");
+        $objSections = new section('', '', '', '');
     ?>
     <div class="container-row">
 
@@ -152,7 +154,8 @@
             <div id="Sections" class="tabcontent">
                 <div class="container-row">
                     <div class="container-sectionform">
-                        <form class="formSection" action="" Method="Post">
+                        <!--Form for insert section-->
+                        <form class="formSection" action="controllers/section_insert.php" Method="Post">
                             <div class="divInputs">
                                 <h1>Register Section</h1>
 
@@ -160,8 +163,8 @@
                                 <input type="text" name="Section" placeholder="Name Section" class="formText">
                                 
                                 <div>
-                                    <label for="sectionFront">Will this section be one of the main ones?</label>
-                                    <input name="sectionFront" type="checkbox">
+                                    <label for="sectionMain">Will this section be one of the main ones?</label>
+                                    <input name="sectionMain" type="checkbox">
                                 </div>
                                 <br>
                                 <label for="Colour" class="formLabel">Colour</label>
@@ -172,20 +175,22 @@
                                 
                             </div>
                         </form>
-                        <form class="formSection" action="" Method="Post">
+                        <!--Form for update section-->
+                        <form class="formSection" action="controllers/section_update.php" Method="Post">
                             <div class="divInputs">
                                 <h1>Modify Section</h1>
 
-                                <label for="Section" class="formLabel">Name Section</label>
-                                <select name="Section" class="formText">
-                                    <option value="idSection">Section#1</option>
-                                    <option value="idSection">Section#2</option>
-                                    <option value="idSection">Section#3</option>
-                                </select>
+                                <label for="Section" class="formLabel">Section</label>
+                                <?php 
+                                    $objSections->get_All_Sections_Combo();
+                                ?>
+
+                                <label for="NameSection" class="formLabel">New name section</label>
+                                <input type="text" name="NameSection" placeholder="Name Section" class="formText">
                                 
                                 <div>
-                                    <label for="sectionFront">Will this section be one of the main ones?</label>
-                                    <input name="sectionFront" type="checkbox">
+                                    <label for="sectionMain">Will this section be one of the main ones?</label>
+                                    <input name="sectionMain" type="checkbox">
                                 </div>
                                 <br>
                                 <label for="Colour" class="formLabel">Colour</label>
@@ -201,27 +206,9 @@
                     <div class="list-user">
                         <h3>Registered sections:</h3>
                         <br>
-                        <article class="row article-Dashboard">
-                            <h3>Name section</h3>
-                            <p><span><strong>Colour: </strong></span><div style="background-color: #DC8516;">#DC8516</div></p>
-                            <form action="" style="width:100%;" method="post">
-                                <br>
-                                <input type="submit" class="btn-Primary" value="Delete">
-                            </form>
-                            <br>
-                        </article>
-                        <hr>
-
-                        <article class="row article-Dashboard">
-                            <h3>Name section</h3>
-                            <p><span><strong>Colour: </strong></span><div style="background-color: #DC8516;">#DC8516</div></p>
-                            <form action="" style="width:100%;" method="post">
-                                <br>
-                                <input type="submit" class="btn-Primary" value="Delete">
-                            </form>
-                            <br>
-                        </article>
-                        <hr>
+                        <?php 
+                            $objSections->get_All_Sections();
+                        ?>
                     </div>
                 </div>
             </div>

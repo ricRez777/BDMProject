@@ -145,28 +145,28 @@
 		}
 
         /*Get de los atributos*/
-        function getIdUse(){
+        public function getIdUse(){
             return $this->id_Use;
         }
-        function getType_use(){
+        public function getType_use(){
             return $this->type_use;
         }
-        function getEmail(){
+        public function getEmail(){
             return $this->email;
         }
-        function getPass(){
+        public function getPass(){
             return $this->pass;
         }
-        function getnameComplate(){
+        public function getnameComplate(){
             return $this->nameComplate;
         }
-        function getPhone(){
+        public function getPhone(){
             return $this->phone;
         }
-        function getProfilePicture(){
+        public function getProfilePicture(){
             return $this->profilePicture;
         }
-        function getFirm(){
+        public function getFirm(){
             return $this->firm;
         }
 
