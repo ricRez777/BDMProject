@@ -42,7 +42,7 @@
             </div>
 
             <!-- Tab content -->
-            <div id="Edition" class="tabcontent" style="display:block">
+            <div id="Edition" class="tabcontent">
                 <article class="row article-Dashboard">
                     <a href="">
                         <h3>News name</h3>
@@ -125,9 +125,9 @@
                 <hr>
             </div>
 
-            <div id="Write" class="tabcontent">
+            <div id="Write" class="tabcontent" style="display:block">
                 <section id="Images" class="images-cards">
-                    <form action="" method="post" class="formRegisterNews" enctype="multipart/form-data">
+                    <form action="controllers/news_insert.php" method="post" class="formRegisterNews" enctype="multipart/form-data">
                         <div class="divInputs">
                             <h2>Writing the news...</h2><br>
                             <label for="txtTitle">Title</label>
@@ -149,12 +149,12 @@
                             <input type="text" name="txtKeywords" placeholder="Keywords" class="formText">
 
                             <label for="cmbSection">Section</label>
-                            <select name="cmbSection" id="" class="formText">
-                                <option value="">Deportes</option>
-                                <option value="">Politica</option>
-                            </select>
+                            <?php
+                                $objSections = new section('', '', '', '');
+                                $objSections->get_All_Sections_Combo();
+                            ?>
 
-                            <label for="images[]">Images</label>
+                            <!--<label for="images[]">Images</label>
                             <div class="row-container">
                                 <div id="add-photo-container">
                                     <div class="add-new-photo first" id="add-photo">
@@ -162,7 +162,7 @@
                                     </div>
                                     <input type="file" multiple id="add-new-photo" name="images[]">
                                 </div>
-                            </div>
+                            </div>-->
 
                             <label for="videos">Videos</label>
                             <input type="file" name="videos[]" multiple class="formText">
@@ -172,9 +172,9 @@
                             <label for="txtDrafting">Drafting</label>
                             <textarea name="txtDrafting" id="" cols="60" rows="35" placeholder="Drafting..."></textarea>
                             <br>
-                            <input type="submit" value="Save draft" class="btn-Secondary">
+                            <input type="submit" name="draft" value="Save draft" class="btn-Secondary">
                             <br>
-                            <input type="submit" value="Send to admin" class="btn-Secondary">
+                            <input type="submit" name="admin" value="Send to admin" class="btn-Secondary">
                         </div>
                     </form>
                 </section>
