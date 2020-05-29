@@ -25,6 +25,8 @@ BEGIN
         WHEN "ACTIVE" THEN 
         update imaget SET activo = 1 where id_image = id_imageP;
         
+        WHEN "LAST_INSERTED" THEN
+		select id_News from newst order by id_News desc limit 1;
 	END CASE;
 END;
 |
