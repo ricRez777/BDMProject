@@ -45,7 +45,6 @@
     echo "Keywords: " . $Keywords . "<br>";
     echo "Section: " . $Section . "<br>";
     echo "Drafting: " . $Drafting . "<br>";
-
     echo "Numero de videos: " . $Num_Videos . "<br>";
     echo "Video: " . $ruta_nueva[0] . "<br>";
     echo "Video: " . $ruta_nueva[1] . "<br>";*/
