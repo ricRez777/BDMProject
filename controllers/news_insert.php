@@ -11,15 +11,7 @@
     $Keywords = $_POST['txtKeywords'];
     $Section = $_POST['IdSection'];
     $Drafting = $_POST['txtDrafting'];
-
-    if(isset($_POST['draft'])){
-        echo "DRAFT <br>";
-        $status = 'DRAFT';
-    }
-    if(isset($_POST['admin'])){
-        echo "ADMIN <br>";
-        $status = 'FINISHED';
-    }
+    $status = $_POST['status'];
 
     $Num_Videos = count($_FILES['videos']['tmp_name']);
     for($i = 0; $i <= $Num_Videos; $i++){

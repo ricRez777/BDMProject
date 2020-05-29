@@ -27,6 +27,14 @@
                     $objSections->get_All_Sections_Combo();
                 ?>
 
+                <p>
+                    Status: <br>
+                    <input type="radio" name="status" value="DRAFT">Draft
+                    <input type="radio" name="status" value="FINISH">Finish
+                </p>
+                
+                <br>
+
                 <label for="images[]">Images</label>
                 <div class="row-container">
                     <div id="add-photo-container">
@@ -44,8 +52,6 @@
             <div class="divInputs">
                 <label for="txtDrafting">Drafting</label>
                 <textarea name="txtDrafting" id="" cols="60" rows="35" placeholder="Drafting..."></textarea>
-                <br>
-                <input type="submit" name="draft" value="Save draft" class="btn-Secondary">
                 <br>
                 <input type="submit" name="admin" value="Send to admin" class="btn-Secondary">
             </div>
