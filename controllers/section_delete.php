@@ -4,7 +4,7 @@
 
     $id = $_POST['id_section'];
 
-    $obj_section_delete = new section($id, "", "");
+    $obj_section_delete = new section($id, "", "", "");
 
     if($obj_section_delete->Delete_Section()){
         header('Location: ../admin_dashboard.php');
