@@ -38,9 +38,11 @@ CALL image_SP(1, 'blob', cover, activo, 'UPDATE');
 
 CALL image_SP(1, null, 0, 0, 'DELETE');
 
-CALL image_SP(1, null, 0, 0, 'DELETE');image_SP
+CALL image_SP(1, null, 0, 0, 'DELETE');
 
 SELECT * FROM imaget;
+
+SELECT * FROM newst
 
 
 
