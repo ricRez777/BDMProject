@@ -27,6 +27,10 @@ BEGIN
         
         WHEN "LAST_INSERTED" THEN
 		select id_News from newst order by id_News desc limit 1;
+        
+        WHEN "SELECT" THEN
+        select id_video, video, cover from videot where id_News = id_newsP AND activo = 1;
+        
 	END CASE;
 END;
 |
@@ -40,11 +44,7 @@ CALL video_SP(1, null, 0, 0, 0, 'DELETE');
 
 CALL video_SP(1, null, 0, 0, 0, 'ACTIVE');
 
-SELECT * FROM videot;
-
-SELECT * FROM newst
-
-
+delete from videot where id_video <> 0
 
 
 

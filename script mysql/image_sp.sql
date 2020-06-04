@@ -27,22 +27,27 @@ BEGIN
         
         WHEN "LAST_INSERTED" THEN
 		select id_News from newst order by id_News desc limit 1;
+        
+        WHEN "SELECT" THEN
+        select id_image, image, cover from imaget where id_News = id_newsP and activo = 1;
+        
 	END CASE;
 END;
 |
 
 /*Ejemplo de uso con la cuenta de administrador: */
-CALL image_SP(0, 'blob', cover, activo, 'INSERT');
+CALL image_SP(0, 'blob', cover, activo, 10, 'INSERT');
 
-CALL image_SP(1, 'blob', cover, activo, 'UPDATE');
+CALL image_SP(1, 'blob', cover, activo, 10, 'UPDATE');
 
-CALL image_SP(1, null, 0, 0, 'DELETE');
+CALL image_SP(1, null, 0, 0, 0, 'DELETE');
 
-CALL image_SP(1, null, 0, 0, 'DELETE');
+CALL image_SP(0, null, 0, 0, 10, 'SELECT');
 
-SELECT * FROM imaget;
+select * from imaget
 
-SELECT * FROM newst
+delete from imaget where id_image <> 0
+
 
 
 

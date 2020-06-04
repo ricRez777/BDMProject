@@ -23,22 +23,17 @@
         /*insertar video*/
         public function Insert_Video(){
             $this->objConection->conexion();
-            $num_videos = sizeof($this->video);
-
-            for($i = 0; $i < $num_videos; $i++){
-                $query = "CALL video_SP(0, '$this->video[$i]', 0, 1, $this->id_New, 'INSERT')";
-                $resultado = $this->objConection->cone->query($query);
-            }
-            
+            $query = "CALL video_SP(0, '$this->video[$i]', 0, 1, $this->id_New, 'INSERT')";
+            $resultado = $this->objConection->cone->query($query);
             if($resultado){
                 $this->objConection->disconnect();
-                echo "SI se inserto";
+                echo "SI se inserto <br>";
 				return true; 
 			}
 			else{
                 $this->objConection->disconnect();
-                echo "NO se inserto";
-				return false;
+                echo "NO se inserto <br>";
+				return false; 	
 			}
         }
 

@@ -43,11 +43,9 @@ CALL section_SP(1, 'Tecnologia', '#18ABD3', 1, 1, 'UPDATE');
 
 CALL section_SP(1, '', '', '', '', 'DELETE');
 
-CALL section_SP(2, '', '', '', '', 'ACTIVE');
+CALL section_SP(3, '', '', '', '', 'ACTIVE');
 
 CALL section_SP(0, '', '', '', '', 'ALL_SECTIONS');
-
-SELECT * FROM sectiont;
 
 
 

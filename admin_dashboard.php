@@ -22,7 +22,9 @@
         include("components/header.php"); 
         require_once ("models/user.php");
         require_once ("models/section.php");
+        require_once ("models/news.php");
         $objSections = new section('', '', '', '');
+        $objAllNewsFinished = new news(null, '', '', '', null, null, '', '', '', null, null, null);
     ?>
     <div class="container-row">
 
@@ -46,52 +48,9 @@
             </div>
 
             <!-- Tab content -->
-            <div id="Finished" class="tabcontent" style="display:block">
-                <article class="row article-Dashboard">
-                    <a href="news_in_edition.php">
-                        <h3>News name</h3>
-                    </a>
-                    <p><span><strong>Description: </strong></span>Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit. Description of the news</p>
-                    <p><span><strong>Location: </strong></span> Apodaca, Nuevo León</p>
-                    
-                    <form action="" style="width:50%;" method="post">
-                        <input type="text" hidden name="idNew">
-                        <input type="submit" class="btn-Primary" value="Confirm">
-                    </form>
-                    <br>    
-                    <form action="" style="width:50%;" method="post">
-                        <input type="text" hidden name="idNew">
-                        <input type="submit" class="btn-Primary" value="Refuse">
-                    </form>
-                
-                    <br>
-                </article>
-                <hr>
-
-                <article class="row article-Dashboard">
-                    <a href="news_in_edition.php">
-                        <h3>News name</h3>
-                    </a>
-                    <p><span><strong>Description: </strong></span>Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit. Description of the news</p>
-                    <p><span><strong>Location: </strong></span> Apodaca, Nuevo León</p>
-
-                    <form action="" style="width:50%;" method="post">
-                        <input type="text" hidden name="idNew">
-                        <input type="submit" class="btn-Primary" value="Confirm">
-                    </form>
-                    <br>    
-                    <form action="" style="width:50%;" method="post">
-                        <input type="text" hidden name="idNew">
-                        <input type="submit" class="btn-Primary" value="Refuse">
-                    </form>
-                    <br>
-                </article>
-                <hr>
-            </div>
+            <?php 
+                include("components/admin_dashboard/finished.php")
+            ?>
 
             <div id="Users" class="tabcontent">
                 <div class="container-row">

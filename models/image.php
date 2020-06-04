@@ -15,29 +15,25 @@
             $this->id_image = $id_imageP;
             $this->image = $imageP;
             $this->cover = $coverP;
-            $this->id_new = $id_newP;
+            $this->id_New = $id_newP;
 
             $this->objConection = new Conection();
         }
 
         /*insertar imagen*/
         public function Insert_Image(){
+
             $this->objConection->conexion();
-            $num_images = sizeof($this->image);
-            
-            for($i = 0; $i < $num_images; $i++){
-                $query = "CALL image_SP(0, '$this->image[$i]', 0, 1, $this->id_New, 'INSERT')";
-                $resultado = $this->objConection->cone->query($query);
-            }
-            
+            $query = "CALL image_SP(0, '$this->image', 0, 1, $this->id_New, 'INSERT')";
+            $resultado = $this->objConection->cone->query($query);
             if($resultado){
                 $this->objConection->disconnect();
-                echo "SI se inserto";
+                echo "SI se inserto <br>";
 				return true; 
 			}
 			else{
                 $this->objConection->disconnect();
-                echo "NO se inserto";
+                echo "NO se inserto <br>";
 				return false; 	
 			}
         }
@@ -57,6 +53,7 @@
 			}
         }
 
+        /*Obtener la ultima noticia insertada*/
         public function Last_Inserted(){
             $this->objConection->conexion();
 			$query = "CALL image_SP(0, null, 0, 0, 0, 'LAST_INSERTED')";
@@ -70,6 +67,22 @@
 				$this->objConection->disconnect();
 				return true;
 			}
+        }
+
+        /*Obtener todas las imagenes para elegir la principal*/
+        public function get_All_Images_Finished(){
+            $this->objConection->conexion();
+            $queryImg = "CALL image_SP(0, null, 0, 0, $this->id_New, 'SELECT');";
+            $resultadoImg = $this->objConection->cone->query($queryImg);
+            while($rowImg = $resultadoImg->fetch_assoc()){ ?>
+
+                <input type="radio" name="imageCover" value="<?php echo $rowImg['id_image']; ?>">
+                <label for="idImage"> 
+                    <img src="data:image/jpg;base64,<?php echo base64_encode($rowImg['image']); ?>" width=100 >
+                </label>
+                <?php
+            }
+
         }
 
         /*SET*/

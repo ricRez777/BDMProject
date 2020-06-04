@@ -15,14 +15,19 @@
     $Section = $_POST['IdSection'];
     $Drafting = $_POST['txtDrafting'];
     $status = $_POST['status'];
+    //$Photo = addslashes(file_get_contents($_FILES['images']['tmp_name']));
 
     /*Obtenemos el numero de imagenes subidas y las guardamos en un arreglo*/
     $Num_images = count($_FILES['images']['tmp_name']);
+    echo "Numero de imagenes cargadas: " . $Num_images . "<br>";
     for($i = 0; $i <= $Num_images; $i++){
         if(!empty($_FILES['images']['tmp_name'][$i])){
             $ruta_nueva_image[$i] = addslashes(file_get_contents($_FILES['images']['tmp_name'][$i]));
         }
     }
+    /*for($j = 0; $j < $Num_images; $j++){
+        echo "Imagen[" . $j . "] " . $ruta_nueva_image[$j] . "<br>";
+    }*/
     
     /*Obtenemos el numero de videos subidos y las guardamos en un arreglo*/
     $Num_Videos = count($_FILES['videos']['tmp_name']);
@@ -37,28 +42,24 @@
 
     if($Obj_News_Insert->Insert_News()){
         
-        /*Objeto para insertar las imagenes de la noticia*/
         $ObjImage = new image(0, 0, 0, 0);
-        /*Objeto para insertar los videos de la noticia*/
         $ObjVideo = new video(0, 0, 0, 0);
 
-        /*Proceso de imagen*/
         $ObjImage->Last_Inserted();
-        $ObjImage->setImage($ruta_nueva_image);
-
-        /*Proceso de video*/
         $ObjVideo->Last_Inserted();
-        $ObjVideo->setVideo($ruta_nueva_video);
 
-        if($ObjImage->Insert_Image() && $ObjVideo->Insert_Video()){
-            header('Location: ../journalist_dashboard.php');
+        for($i = 0; $i < $Num_images; $i++){
+            $ObjImage->setImage($ruta_nueva_image[$i]);
+            $ObjImage->Insert_Image();
         }
-        else{
-            echo "ocurrio un erro al insertar la imagen";
+
+        for($v = 0; $v < $Num_Videos; $v++){
+            $ObjVideo->setVideo($ruta_nueva_video[$v]);
+            $ObjVideo->Insert_Video();
         }
     }
     else{
-        echo "ocurrio un error al insertar la noticia";
+        echo "ocurrio un error al insertar la noticia <br>";
     }
 
 ?>

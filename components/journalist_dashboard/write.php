@@ -29,8 +29,8 @@
 
                 <p>
                     Status: <br>
-                    <input type="radio" name="status" value="DRAFT">Draft
-                    <input type="radio" name="status" value="FINISH">Finish
+                    <input type="radio" name="status" value="EDITION">Edition
+                    <input type="radio" name="status" value="FINISHED">Finished
                 </p>
                 
                 <br>
@@ -53,7 +53,7 @@
                 <label for="txtDrafting">Drafting</label>
                 <textarea name="txtDrafting" id="" cols="60" rows="35" placeholder="Drafting..."></textarea>
                 <br>
-                <input type="submit" name="admin" value="Send to admin" class="btn-Secondary">
+                <input type="submit" name="admin" value="Submit" class="btn-Secondary">
             </div>
         </form>
     </section>
