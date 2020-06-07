@@ -41,6 +41,7 @@
 
             $this->objConection = new Conection();
             $this->objImage = new image(0, null, 0, $this->id_News);
+            $this->objVideo = new video(0, null, 0, $this->id_News);
         }
 
         /*registro de noticias*/
@@ -158,14 +159,13 @@
                         <p><?php echo $row['textNews']; ?></p>
                         <br>
                         <p><strong>Video to show: </strong></p>
-                        <input type="radio" name="videoShow" value="idVideo">
-                        <label for="idVideo"><video src="img/videoExample.mp4" width="200" controls></video></label>
-                        <input type="radio" name="videoShow" value="idVideo">
-                        <label for="idVideo"><video src="img/videoExample.mp4" width="200" controls></video></label>
-                        <br>
-                        <br>
-                        <p><strong>Publication date: </strong><?php echo $row['publicationDate']; ?></p>
-                        <br>
+                        
+                        <!-- -------------------------------------- -->
+                        <?php 
+                            $this->objVideo->get_All_Videos_Finished();
+                        ?>
+                        <!-- -------------------------------------- -->
+                        <br> <br>
                         <p><strong>Edit by: </strong><?php echo $row['firm']; ?></p>
                         <br>
                         <hr>

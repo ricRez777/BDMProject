@@ -30,6 +30,24 @@
         <div class="container">
             <?php
                 include("components/maincategories.php");
+                if(isset($_GET['success'])){
+                    $alert = $_GET['success'];
+                    if($alert == 1){
+                    ?>
+                        <script>
+                            alert("La noticia se inserto correctamente");
+                        </script>
+                    <?php
+                    }
+                    else{
+                        ?>
+                            <script>
+                                alert("Error no se pudo instalar la noticia");
+                            </script>
+                        <?php
+                    }
+                    $alert = '';
+                }
             ?>
         </div>
 

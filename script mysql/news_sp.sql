@@ -92,6 +92,6 @@ CALL news_SP(10, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT_FINISHE
 
 select * from newst;
 
-delete from newst where id_News <> 0
+delete from newst where id_News <> 0;
 
 

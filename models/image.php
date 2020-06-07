@@ -78,7 +78,7 @@
 
                 <input type="radio" name="imageCover" value="<?php echo $rowImg['id_image']; ?>">
                 <label for="idImage"> 
-                    <img src="data:image/jpg;base64,<?php echo base64_encode($rowImg['image']); ?>" width=100 >
+                    <img src="<?php echo "controllers/" . $rowImg['image'];?>" width=100 >
                 </label>
                 <?php
             }
@@ -117,7 +117,7 @@
         }
 
         public function getIdNew(){
-            return $this->id_new;
+            return $this->id_New;
         }
     }
 

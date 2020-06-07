@@ -44,6 +44,10 @@ CALL video_SP(1, null, 0, 0, 0, 'DELETE');
 
 CALL video_SP(1, null, 0, 0, 0, 'ACTIVE');
 
+CALL video_SP(0, null, 0, 0, 23, 'SELECT');
+
+Select * from videot;
+
 delete from videot where id_video <> 0
 
 

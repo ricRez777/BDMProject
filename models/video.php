@@ -23,7 +23,7 @@
         /*insertar video*/
         public function Insert_Video(){
             $this->objConection->conexion();
-            $query = "CALL video_SP(0, '$this->video[$i]', 0, 1, $this->id_New, 'INSERT')";
+            $query = "CALL video_SP(0, '$this->video', 0, 1, $this->id_New, 'INSERT')";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
                 $this->objConection->disconnect();
@@ -66,6 +66,22 @@
 				$this->objConection->disconnect();
 				return true;
 			}
+        }
+
+        /*Obtener todas los videos para elegir el principal*/
+        public function get_All_Videos_Finished(){
+            $this->objConection->conexion();
+            $queryVid = "CALL video_SP(0, null, 0, 0, $this->id_new, 'SELECT');";
+            $resultadoVid = $this->objConection->cone->query($queryVid);
+            while($rowVid = $resultadoVid->fetch_assoc()){ ?>
+
+                <input type="radio" name="imageCover" value="<?php echo $rowVid['id_video']; ?>">
+                <label>
+                    <video controls width="300" height="150" src="<?php echo "controllers/" . $rowVid['video'];?>"></video>
+                </label>
+                <?php
+            }
+
         }
 
         /*SET*/
