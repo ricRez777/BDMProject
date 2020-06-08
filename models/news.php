@@ -106,6 +106,23 @@
 			}
         }
 
+        /*Obtenemos los elementos de la noticia publicada*/
+        public function get_News_Published(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP($this->id_News, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT_PUBLISHED');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){
+                $this->title = $row['title'];
+                $this->description = $row['descriptionNews'];
+                $this->textNews = $row['textNews'];
+                $this->eventDate = $row['eventDate'];
+                $this->publicationDate = $row['publicationDate'];
+                $this->location = $row['location'];
+                $this->id_Section = $row['nameSection'];
+                $this->id_Use = $row['firm'];
+            }
+        }
+
         /*Mostrar todos las noticias terminadas*/
         public function get_All_Finished(){
             $this->objConection->conexion();
@@ -132,6 +149,84 @@
             }
         }
 
+        /*Mostrar todos las noticias en edición*/
+        public function get_All_Edition(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 0, $this->id_Use, 'SELECT_EDITION_ALL');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <article class="row article-Dashboard">
+                    <h3><?php echo $row['title']; ?></h3>
+                    <p><span><strong>Description: </strong></span><?php echo $row['descriptionNews']; ?></p>
+                    <p><span><strong>Location: </strong></span><?php echo $row['location']; ?></p>
+                    <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
+                    <form action="news_edit.php" style="width:50%;" method="post">
+                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <div class="row">
+                            <input type="submit" class="btn-Primary" value="Edit">
+                        </div>
+                    </form>
+                    <br>   
+                </article>
+                <hr>
+
+                <?php
+            }
+        }
+
+        /*Mostrar todos las noticias terminadas POR USUARIO*/
+        public function get_All_Finished_By_User(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 0, $this->id_Use, 'SELECT_FINISHED_ALL_BY_USER');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <article class="row article-Dashboard">
+                    <h3><?php echo $row['title']; ?></h3>
+                    <p><span><strong>Description: </strong></span><?php echo $row['descriptionNews']; ?></p>
+                    <p><span><strong>Location: </strong></span><?php echo $row['location']; ?></p>
+                    <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
+                    <!--<form action="" style="width:50%;" method="post">
+                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <div class="row">
+                            <input type="submit" class="btn-Primary" value="Check">
+                        </div>
+                    </form>-->
+                    <br>   
+                </article>
+                <hr>
+
+                <?php
+            }
+        }
+
+        /*Mostrar todos las noticias publicadas POR USUARIO*/
+        public function get_All_Published_By_User(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 0, $this->id_Use, 'SELECT_PUBLISHED_ALL_BY_USER');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <article class="row article-Dashboard">
+                    <h3> <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>" > <?php echo $row['title'];?> </a> </h3>
+                    <p><span><strong>Description: </strong></span><?php echo $row['descriptionNews']; ?></p>
+                    <p><span><strong>Location: </strong></span><?php echo $row['location']; ?></p>
+                    <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
+                    <form action="" style="width:50%;" method="post">
+                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <div class="row">
+                            <input type="submit" class="btn-Primary" value="Delete">
+                        </div>
+                    </form>
+                    <br>   
+                </article>
+                <hr>
+
+                <?php
+            }
+        }
+
         /*Mostrar una sola noticia terminada*/
         public function get_Finished(){
             $this->objConection->conexion();
@@ -140,17 +235,16 @@
             while($row = $resultado->fetch_assoc()){ ?>
 
                 <div class="containerNews">
-                    <form action="" method="post">
+                    <form action="controllers/news_post.php" method="post">
                         <h1><?php echo $row['title']; ?></h1>
                         <p><?php echo $row['descriptionNews']; ?></p>
                         <br>
-                        <p><strong>Location: </strong><?php echo $row['location']; ?></p>
-                        <p><strong>Event date: </strong><?php echo $row['eventDate']; ?></p>
-                        <p><strong>Section: </strong><?php echo $row['nameSection']; ?></p>
+                        <p><strong>Localizacioon: </strong><?php echo $row['location']; ?></p>
+                        <p><strong>Fecha del evento: </strong><?php echo $row['eventDate']; ?></p>
+                        <p><strong>Sección: </strong><?php echo $row['nameSection']; ?></p>
                         <br>
-                        <p><strong>Choose the start image:</strong></p>
-
                         <!-- -------------------------------------  -->
+                        <p><strong>Imagenes que se mostraran en la noticia:</strong></p>
                         <?php 
                             $this->objImage->get_All_Images_Finished();
                         ?>
@@ -158,9 +252,9 @@
                         <br>
                         <p><?php echo $row['textNews']; ?></p>
                         <br>
-                        <p><strong>Video to show: </strong></p>
-                        
                         <!-- -------------------------------------- -->
+                        <p><strong>Elije el video que se mostrara en la noticia: </strong></p>
+                        
                         <?php 
                             $this->objVideo->get_All_Videos_Finished();
                         ?>
@@ -170,10 +264,92 @@
                         <br>
                         <hr>
                         <br>
+                        <input type="text" hidden name="id_News" value="<?php echo $row['id_News']; ?>">
                         <input style="width:10%; float:right; margin-right:5%;" type="submit" class="btn-Primary" value="Publish">
                         <br><br><br><br>
                     </form>
                 </div>
+
+                <?php
+            }
+        }
+
+        /*Mostrar una sola noticia que esta en edicion*/
+        public function get_Edition(){
+            $idNew = $_POST['idNew'];
+            $this->objConection->conexion();
+            $query = "CALL news_SP($idNew, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <form action="controllers/news_insert.php" method="post" class="formRegisterNews" enctype="multipart/form-data">
+                    <div class="divInputs">
+                        <h2>Writing the news...</h2><br>
+                        <label for="txtTitle">Title</label>
+                        <input type="text" required name="txtTitle" placeholder="Title" class="formText" value="<?php echo $row['title']; ?>">
+
+                        <label for="txtDescription">Description</label>
+                        <input type="text" required name="txtDescription" placeholder="Description" class="formText" value="<?php echo $row['descriptionNews']; ?>">
+
+                        <label for="eventDate">Event date</label>
+                        <?php  
+                            $ED = explode(" ", $row['eventDate']);
+                        ?>
+                        <input type="datetime-local" required name="eventDate" class="formText" value="<?php echo $ED[0] . "T" . $ED[1]; ?>">
+
+                        <label for="txtLocation">Location</label>
+                        <input type="text" required name="txtLocation" placeholder="Location" class="formText" value="<?php echo $row['location']; ?>">
+
+                        <label for="txtKeywords">Keywords</label>
+                        <input type="text" required name="txtKeywords" placeholder="Keywords" class="formText" value="<?php echo $row['keywords']; ?>">
+
+                        <label for="cmbSection">Section</label>
+                        <?php
+                            $objSections = new section('', '', '', '');
+                            $objSections->get_All_Sections_Combo();
+                        ?>
+
+                        <p>
+                            Status: <br>
+                            <?php 
+                                if($row['statusNews'] == 'EDITION'){
+                                    ?> 
+                                        <input type="radio" checked name="status" value="EDITION">Edition
+                                        <input type="radio" name="status" value="FINISHED">Finished
+                                    <?php
+                                }
+                                else if($row['statusNews'] == 'FINISHED'){
+                                    ?> 
+                                        <input type="radio" name="status" value="EDITION">Edition
+                                        <input type="radio" checked name="status" value="FINISHED">Finished
+                                    <?php
+                                }
+                            ?>
+                        </p>
+                        
+                        <br>
+
+                        <label for="images[]"> <strong>IMAGES</strong> *Solo se aceptan archivos JPG* </label>
+                        <div class="row-container">
+                            <div id="add-photo-container">
+                                <div class="add-new-photo first" id="add-photo">
+                                    <span><i class="icon-camera"></i></span>
+                                </div>
+                                <input type="file" required multiple id="add-new-photo" accept=".jpg" name="images[]">
+                            </div>
+                        </div>
+                        <br>
+                        <label for="videos"> <strong>VIDEOS</strong> *Solo se aceptan archivos MP4* </label>
+                        <input type="file" required name="videos[]" accept=".mp4" multiple class="formText">
+
+                    </div>
+                    <div class="divInputs">
+                        <label for="txtDrafting">Drafting</label>
+                        <textarea name="txtDrafting" id="" required cols="60" rows="35" placeholder="Drafting..."><?php echo $row['textNews']; ?></textarea>
+                        <br>
+                        <input type="submit" name="admin" value="Submit" class="btn-Secondary">
+                    </div>
+                </form>
 
                 <?php
             }

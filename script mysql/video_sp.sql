@@ -19,6 +19,9 @@ BEGIN
         WHEN "UPDATE" THEN 
         update videot SET video = videoP, cover = coverP, id_News = id_newsP where id_video = id_videoP;
         
+        WHEN "COVER" THEN
+        update videot SET cover = coverP where id_video = id_videoP;
+        
         WHEN "DELETE" THEN 
         update videot SET activo = 0 where id_video = id_videoP;
         
@@ -30,6 +33,9 @@ BEGIN
         
         WHEN "SELECT" THEN
         select id_video, video, cover from videot where id_News = id_newsP AND activo = 1;
+        
+        WHEN "SELECT_SHOW" THEN
+        select video from videot where id_News = id_newsP AND cover = 1 AND activo = 1;
         
 	END CASE;
 END;
@@ -44,7 +50,9 @@ CALL video_SP(1, null, 0, 0, 0, 'DELETE');
 
 CALL video_SP(1, null, 0, 0, 0, 'ACTIVE');
 
-CALL video_SP(0, null, 0, 0, 23, 'SELECT');
+CALL video_SP(0, null, 0, 0, 55, 'SELECT');
+
+CALL video_SP(0, null, 0, 0, 55, 'SELECT_SHOW');
 
 Select * from videot;
 

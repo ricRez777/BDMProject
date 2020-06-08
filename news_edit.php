@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drafting</title>
+    <title>Edition</title>
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/modal.css">
@@ -18,7 +18,11 @@
 
 <body>
     
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        require_once ("models/news.php");
+        $objNewsEdit = new news(null, '', '', '', null, null, '', '', '', null, null, $_SESSION['idUse']);
+    ?>
     <div class="container-row">
         
         <div class="sidenav-area">
@@ -34,56 +38,11 @@
             </div>
             
             <section id="Images" class="images-cards">
-                <form action="" method="post" class="formRegisterNews" enctype="multipart/form-data">
-                    <div class="divInputs">
-                        <h2>Writing the news...</h2><br>
-                        <label for="txtTitle">Title</label>
-                        <input type="text" name="txtTitle" placeholder="Title" class="formText">
 
-                        <label for="txtDescription">Description</label>
-                        <input type="text" name="txtDescription" placeholder="Description" class="formText">
+                <?php 
+                    $objNewsEdit->get_Edition();
+                ?>
 
-                        <label for="eventDate">Event date</label>
-                        <input type="datetime-local" name="eventDate" class="formText">
-
-                        <label for="txtLocation">Location</label>
-                        <input type="text" name="txtLocation" placeholder="Location" class="formText">
-
-                        <label for="publicationDate">Publication Date</label>
-                        <input type="date" name="publicationDate" class="formText">
-
-                        <label for="txtKeywords">Keywords</label>
-                        <input type="text" name="txtKeywords" placeholder="Keywords" class="formText">
-
-                        <label for="cmbSection">Section</label>
-                        <select name="cmbSection" id="" class="formText">
-                            <option value="">Deportes</option>
-                            <option value="">Politica</option>
-                        </select>
-
-                        <label for="images[]">Images</label>
-                        <div class="row-container">
-                            <div id="add-photo-container">
-                                <div class="add-new-photo first" id="add-photo">
-                                    <span><i class="icon-camera"></i></span>
-                                </div>
-                                <input type="file" multiple id="add-new-photo" name="images[]">
-                            </div>
-                        </div>
-
-                        <label for="videos">Videos</label>
-                        <input type="file" name="videos[]" multiple class="formText">
-
-                    </div>
-                    <div class="divInputs">
-                        <label for="txtDrafting">Drafting</label>
-                        <textarea name="txtDrafting" id="" cols="60" rows="35" placeholder="Drafting..."></textarea>
-                        <br>
-                        <input type="submit" name="save-draft" value="Save draft" class="btn-Secondary">
-                        <br>
-                        <input type="submit" name="finish" value="Finish" class="btn-Secondary">
-                    </div>
-                </form>
             </section>
         </div>
     </div>

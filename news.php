@@ -14,7 +14,10 @@
 </head>
 
 <body>
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        include("controllers/news_show.php");
+    ?>
     <div class="container-row">
 
         <div class="sidenav-area">
@@ -47,45 +50,29 @@
         
             <div class="containerNews">
                 <div>
-                    <h1>Titulo de la noticia</h1>
+                    <br>
+                    <h1><?php echo $objNewShow->getTitle(); ?></h1>
+                    <br>
                     <p>
-                        Description of the News. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        <?php echo $objNewShow->getDescription(); ?>
                     </p>
-                    <p><strong>Location: </strong>México city</p>
-                    <p><strong>Event date: </strong>03/22/2020</p>
-
+                    <br>
+                    <p><strong>Localización: </strong><?php echo $objNewShow->getLocation(); ?></p>
+                    <p><strong>Fecha del evento: </strong><?php echo $objNewShow->getEventDate(); ?></p>
+                    <br>
                     <?php include("components/slider.php"); ?>
-
+                    <br>
                     <p>
-                        El secretario de Salud de Nuevo León, Manuel de la O Cavazos, informó que ya suman 25
-                        casos de coronavirus en Nuevo León de los cuáles uno fue de contagio.
+                        <?php echo $objNewShow->getTextNews(); ?>
                     </p>
-                    <p>
-                        De la O Cavazos informó que el caso de contagio se dio a un chofer de uno de los
-                        pacientes que habían sido confirmados días antes.
-                    </p>
-                    <p>
-                        "Entre estos pacientes que tenemos, un paciente fue contacto, el chofer de una persona
-                        que dio caso positivo es el que tiene contagio de esta enfermedad.
-                    </p>
-                    <p>
-                        "Son el total 145 casos: 25 casos confirmados, 85 negativos y 35 sospechosos", dijo De
-                        la O".
-                        Los primeros 14 casos son personas de San Pedro, los cinco anunciados el pasado miércoles
-                        son de Monterrey y estos últimos de Monterrey, Apodaca, Santa Catarina y San Pedro.
-                    </p>
-                    <p>
-                        Con esto, el estado pasa a la fase dos que son contagios locales y comunitarios aunque
-                        desde hace días ya se habían tomado medidas de esa fase como suspender
-                        actividades escolares.
-                    </p>
-                    <p>
-                        La edad promedio de todos los infectados, dijo el funcionario es de 41 años y 76%
-                        son hombres.
-                    </p>
-                    <video src="img/videoExample.mp4" width="700" controls></video>
-                    <p><strong>Publication date: </strong>03/22/2020</p>
-                    <p><strong>Edit by: </strong>El MERO ÑERO</p>
+                    <br>
+                    <video src="<?php echo "controllers/" . $objVideoShow->getVideo();?>" width="700" controls></video>
+                    <br>
+                    <br>
+                    <p><strong>Publicado el: </strong><?php echo $objNewShow->getPublicationDate(); ?></p>
+                    <p><strong>Escrito por: </strong><?php echo $objNewShow->getIdUse(); ?></p>
+                    <br>
+                    <hr>
                     <?php include("components/comments.php") ?>
                 </div>
                 <?php include("components/breakingNews.php") ?>

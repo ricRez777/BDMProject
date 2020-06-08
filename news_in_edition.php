@@ -38,8 +38,7 @@
             </div>
 
             <?php 
-                /*get_Finished() es un metodo de la clase news para mostrar la noticia*/
-                $objNews->get_Finished();
+                $objNews->get_Finished(); //metodo de la clase news para mostrar la noticia
             ?>
 
         </div>

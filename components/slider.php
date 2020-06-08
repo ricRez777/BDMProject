@@ -1,17 +1,8 @@
 <div class="slideshow">
     <ul class="slider">
-        <li>
-            <img src="img/newsPrev.jpg" alt="">
-        </li>
-        <li>
-            <img src="img/newsPrev.jpg" alt="">
-        </li>
-        <li>
-            <img src="img/newsPrev.jpg" alt="">
-        </li>
-        <li>
-            <img src="img/newsPrev.jpg" alt="">
-        </li>
+        <?php 
+            $objImgSlider->get_Images_Slider();
+        ?>
     </ul>
     <div class="left">
         <span>

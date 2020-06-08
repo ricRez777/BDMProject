@@ -18,7 +18,13 @@
 </head>
 
 <body>
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        require_once ("models/user.php");
+        require_once ("models/section.php");
+        require_once ("models/news.php");
+        $objAllNews = new news(null, '', '', '', null, null, '', '', '', null, null, $_SESSION['idUse']);
+    ?>
     <div class="container-row">
         
         <div class="sidenav-area">
@@ -28,27 +34,7 @@
         <div class="content-area">
 
         <div class="container">
-            <?php
-                include("components/maincategories.php");
-                if(isset($_GET['success'])){
-                    $alert = $_GET['success'];
-                    if($alert == 1){
-                    ?>
-                        <script>
-                            alert("La noticia se inserto correctamente");
-                        </script>
-                    <?php
-                    }
-                    else{
-                        ?>
-                            <script>
-                                alert("Error no se pudo instalar la noticia");
-                            </script>
-                        <?php
-                    }
-                    $alert = '';
-                }
-            ?>
+            <?php include("components/maincategories.php"); ?>
         </div>
 
             <!-- Tab links -->

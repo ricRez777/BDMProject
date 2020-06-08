@@ -53,6 +53,19 @@
 			}
         }
 
+        /*Mostrar las imagenes en el slider de la publicacion*/
+        public function get_Images_Slider(){
+            $this->objConection->conexion();
+            $queryImg = "CALL image_SP(0, null, 0, 0, $this->id_New, 'SELECT');";
+            $resultadoImg = $this->objConection->cone->query($queryImg);
+            while($rowImg = $resultadoImg->fetch_assoc()){ ?>
+                <li>
+                    <img src="<?php echo "controllers/" . $rowImg['image'];?>" height=400 width=500>
+                </li>
+                <?php
+            }
+        }
+
         /*Obtener la ultima noticia insertada*/
         public function Last_Inserted(){
             $this->objConection->conexion();
@@ -76,13 +89,12 @@
             $resultadoImg = $this->objConection->cone->query($queryImg);
             while($rowImg = $resultadoImg->fetch_assoc()){ ?>
 
-                <input type="radio" name="imageCover" value="<?php echo $rowImg['id_image']; ?>">
+                <!--<input type="radio" name="imageCover" value="<?php //echo $rowImg['id_image']; ?>">-->
                 <label for="idImage"> 
-                    <img src="<?php echo "controllers/" . $rowImg['image'];?>" width=100 >
+                    <img src="<?php echo "controllers/" . $rowImg['image'];?>" width=200 >
                 </label>
                 <?php
             }
-
         }
 
         /*SET*/

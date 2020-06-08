@@ -1,24 +1,9 @@
 <div id="Published" class="tabcontent">
-    <article class="row article-Dashboard">
-        <a href="">
-            <h3>News name Published</h3>
-        </a>
-        <p><span><strong>Description: </strong></span>Lorem ipsum dolor sit amet consectetur
-            adipisicing
-            elit. Description of the news</p>
-        <p><span><strong>Location: </strong></span> Apodaca, Nuevo León</p>
-        <br>
-    </article>
-    <hr>
-    <article class="row article-Dashboard">
-        <a href="">
-            <h3>News name Published</h3>
-        </a>
-        <p><span><strong>Description: </strong></span>Lorem ipsum dolor sit amet consectetur
-            adipisicing
-            elit. Description of the news</p>
-        <p><span><strong>Location: </strong></span> Apodaca, Nuevo León</p>
-        <br>
-    </article>
-    <hr>
+<h1>Published news: </h1>
+    <br>
+    <?php 
+        
+        $objAllNews->get_All_Published_By_User();
+    
+    ?>
 </div>

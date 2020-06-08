@@ -78,11 +78,16 @@
             $ObjVideo->setVideo($rutaVid[$v]);
             $ObjVideo->Insert_Video();
         }
-        header('Location: ../journalist_dashboard.php?success=1');
+        ?>
+            <script>
+                alert("La noticia ha sido insertada");
+            </script>
+        <?php
+        header('Location: ../journalist_dashboard.php');
     }
     else{
         echo "ocurrio un error al insertar la noticia <br>";
-        header('Location: ../journalist_dashboard.php?success=0');
+        header('Location: ../journalist_dashboard.php');
     }
 
 ?>
