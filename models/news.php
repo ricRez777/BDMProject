@@ -162,6 +162,64 @@
             }
         }
 
+        /*Obtenemos todas las noticicas por sección para la pantalla principal*/
+        public function Sections_News_All_Index($idSection){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, $idSection, 0, 'GET_ALL_SECTIONSNEWS');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+                
+                <div class="NewsPrev js-carousel-item">
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title'];?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </div>
+
+                <?php
+            }
+        }
+
+        /*Metodo para busqueda de noticias*/
+        public function search_News(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '$this->textNews', null, null, '', '', '', 0, 0, '', 0, 'SEARCH');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+                <article class="NewsPrev">
+                <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title']; ?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </article>
+
+                <?php
+            }
+        }
+
+        /*Entre un rango de fechas*/
+        public function search_News_date($fecha1, $fecha2){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '$this->textNews', null, null, '', '', '', 0, 0, '', 0, 'SEARCH');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ 
+                if($row['publicationDate'] >= $fecha1 || $row['publicationDate'] <= $fecha1){
+                ?>
+                <article class="NewsPrev">
+                <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title']; ?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </article>
+
+                <?php
+                }
+            }
+        }
+
         /*Obtenemos los elementos de la noticia publicada*/
         public function get_News_Published(){
             $this->objConection->conexion();
