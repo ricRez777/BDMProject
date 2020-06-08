@@ -33,13 +33,20 @@ BEGIN
         update usert SET activo = 0
         where id_Use = id_UseP;
         
+        WHEN "CONFIRM_DELETE" THEN
+        update usert SET confirm = 1
+        where id_Use = id_UseP;
+        
+        WHEN "CONFIRM_STATUS" THEN
+        select confirm from usert where id_Use = id_UseP;
+        
         WHEN "ACTIVE" THEN 
         update usert SET activo = 1
         where id_Use = id_UseP;
         
         WHEN "LOGIN" THEN 
         select usert.email, usert.pass, usert.type_use, usert.profilePicture, usert.nameComplete, usert.id_Use, usert.phone, usert.firm
-        from usert where usert.email = emailP AND usert.pass = passP;
+        from usert where usert.email = emailP AND usert.pass = passP AND activo = 1;
         
         WHEN "LIST_JOURNALIST" THEN 
         select usert.id_Use, usert.email, usert.firm, usert.nameComplete, usert.phone

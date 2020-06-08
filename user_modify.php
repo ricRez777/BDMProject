@@ -36,23 +36,23 @@
                     <div class="divInputs">
                         <h1>User Journalist</h1>
 
-                        <label for="Name" class="formLabel">Name</label>
+                        <label for="Name" class="formLabel">Nombre</label>
                         <input type="text" name="Name" placeholder="Name" class="formText" value="<?php echo $_SESSION['Name'] ?>">
 
-                        <label for="Phone" class="formLabel">Phone</label>
+                        <label for="Phone" class="formLabel">Telefono</label>
                         <input type="number" name="Phone" placeholder="Phone" class="formText" value="<?php echo $_SESSION['phone'] ?>">
                         
                         <label for="Email" class="formLabel">E-mail</label>
                         <input type="e-mail" name="Email" placeholder="Email" class="formText" value="<?php echo $_SESSION['Email'] ?>">
                         
-                        <label for="Pass" class="formLabel">Password</label>
+                        <label for="Pass" class="formLabel">Contraseña</label>
                         <input type="password" name="Pass" placeholder="Password" class="formText" value="<?php echo $_SESSION['Pass'] ?>">
 
-                        <label for="Image">You Profile picture</label>
+                        <label for="Image">Tu foto actual</label>
                         <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['Photo']) ?>" width=200 >
                         
                         <section id="Images" class="images-cards">
-                            <label for="image">Profile Picture</label>
+                            <label for="image">Carga una nueva foto de perfil</label>
                             <div class="row-container">
                                 <div id="add-photo-container">
                                     <div class="add-new-photo first" id="add-photo">
@@ -63,8 +63,13 @@
                             </div>
                         </section>
 
-                        <input type="submit" value="Modify now!" class="btn-Secondary">
+                        <input type="submit" value="Modificar" class="btn-Secondary">
+                        <br>
                     </div>
+                </form>
+                <form action="controllers/reader_delete.php" Method="Post">
+                    <input type="text" hidden name="idUse" value="<?php echo $_SESSION['idUse']?>">
+                    <input type="submit" value="Cerrar mi cuenta" class="btn-Primary">
                 </form>
             </div>
         </div>

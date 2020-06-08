@@ -18,7 +18,10 @@
 </head>
 
 <body>
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        require_once ("models/user.php");
+    ?>
     <div class="container-row">
 
         <div class="sidenav-area">
@@ -85,6 +88,19 @@
                         <input type="submit" value="Modify now!" class="btn-Secondary">
                     </div>
                 </form>
+                <?php 
+                    $objDeleteConfirm = new user($_SESSION['idUse'], '', '', '', '', '', '', '');
+                    $objDeleteConfirm->get_confirm_status();
+                    if($objDeleteConfirm->getConfirm() == 1){
+                        ?> 
+                            <form action="controllers/reader_delete.php" Method="Post">
+                                <input type="text" hidden name="idUse" value="<?php echo $_SESSION['idUse']?>">
+                                <input type="submit" value="Cerrar mi cuenta" class="btn-Primary">
+                            </form>
+                            <br> <br>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

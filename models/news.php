@@ -94,7 +94,7 @@
         /*cambiar estatus de la noticia*/
         public function Change_Status(){
             $this->objConection->conexion();
-            $query = "CALL news_SP($this->id_News, '', '', '', null, null, '', '', '$this->statusNews', 0, 1, 0, 0, 'CHANGE_STATUS')";
+            $query = "CALL news_SP($this->id_News, '', '', '', null, null, '', '', '$this->statusNews', $this->front, 1, 0, 0, 'CHANGE_STATUS')";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
 				$this->objConection->disconnect();
@@ -104,6 +104,62 @@
 				$this->objConection->disconnect();
 				return false; 	
 			}
+        }
+
+        /*Obtenemos todas las noticas que se insertaron de ultimo momento*/
+        public function Breaking_News(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 1, 0, 0, 'GET_ALL_BREAKINGNEWS')";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <div class="NewsPrev js-carousel-item">
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title'];?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </div>
+
+                <?php
+            }
+        }
+
+        /*Obtenemos todas las noticicas que deben aparecer en la pagina principal*/
+        public function Front_News(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 1, 0, 0, 'GET_ALL_FRONTNEWS')";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+
+                <div class="NewsPrev js-carousel-item">
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title'];?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </div>
+
+                <?php
+            }
+        }
+
+        /*Obtenemos todas las noticicas por sección*/
+        public function Sections_News_All(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, $this->id_Section, 0, 'GET_ALL_SECTIONSNEWS');";
+            $resultado = $this->objConection->cone->query($query);
+            while($row = $resultado->fetch_assoc()){ ?>
+                <article class="NewsPrev">
+                <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title']; ?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </article>
+
+                <?php
+            }
         }
 
         /*Obtenemos los elementos de la noticia publicada*/
@@ -161,10 +217,18 @@
                     <p><span><strong>Description: </strong></span><?php echo $row['descriptionNews']; ?></p>
                     <p><span><strong>Location: </strong></span><?php echo $row['location']; ?></p>
                     <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
+                    
                     <form action="news_edit.php" style="width:50%;" method="post">
                         <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
                         <div class="row">
                             <input type="submit" class="btn-Primary" value="Edit">
+                        </div>
+                    </form>
+                    <br>
+                    <form action="controllers/news_delete.php" style="width:50%;" method="post">
+                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <div class="row">
+                            <input type="submit" class="btn-Primary" value="Delete">
                         </div>
                     </form>
                     <br>   
@@ -187,12 +251,12 @@
                     <p><span><strong>Description: </strong></span><?php echo $row['descriptionNews']; ?></p>
                     <p><span><strong>Location: </strong></span><?php echo $row['location']; ?></p>
                     <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
-                    <!--<form action="" style="width:50%;" method="post">
+                    <form action="controllers/news_delete.php" style="width:50%;" method="post">
                         <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
                         <div class="row">
-                            <input type="submit" class="btn-Primary" value="Check">
+                            <input type="submit" class="btn-Primary" value="Delete">
                         </div>
-                    </form>-->
+                    </form>
                     <br>   
                 </article>
                 <hr>
@@ -243,24 +307,26 @@
                         <p><strong>Fecha del evento: </strong><?php echo $row['eventDate']; ?></p>
                         <p><strong>Sección: </strong><?php echo $row['nameSection']; ?></p>
                         <br>
-                        <!-- -------------------------------------  -->
+                        <!----------------------------------------->
                         <p><strong>Imagenes que se mostraran en la noticia:</strong></p>
                         <?php 
                             $this->objImage->get_All_Images_Finished();
                         ?>
-                        <!-- -------------------------------------  -->
+                        <!----------------------------------------->
                         <br>
                         <p><?php echo $row['textNews']; ?></p>
                         <br>
-                        <!-- -------------------------------------- -->
+                        <!------------------------------------------>
                         <p><strong>Elije el video que se mostrara en la noticia: </strong></p>
-                        
                         <?php 
                             $this->objVideo->get_All_Videos_Finished();
                         ?>
-                        <!-- -------------------------------------- -->
+                        <!------------------------------------------>
                         <br> <br>
-                        <p><strong>Edit by: </strong><?php echo $row['firm']; ?></p>
+                        <p><strong>Escrito por: </strong><?php echo $row['firm']; ?></p>
+                        <br>
+                        <label> <strong> Esta noticia sera de las que aparecen en el inicio? </strong> </label>
+                        <input name="front" type="checkbox">
                         <br>
                         <hr>
                         <br>

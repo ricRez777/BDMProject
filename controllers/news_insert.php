@@ -21,16 +21,6 @@
         $status = "EDITION";
     }
 
-    echo $Title . "<br>";
-    echo $Description . "<br>";
-    echo $EventDate . "<br>";
-    echo $Location . "<br>";
-    echo $Keywords . "<br>";
-    echo $Section . "<br>";
-    echo $Drafting . "<br>";
-    echo $status . "<br>";
-
-
     /*Objeto para inserta la noticia*/
     $Obj_News_Insert = new news(0, $Title, $Description, $Drafting, $EventDate, null, $Location, $Keywords, $status, 1, $Section, $_SESSION['idUse']);
 

@@ -120,9 +120,7 @@
             ?> 
             <?php
             while($row = $resultado->fetch_assoc()){ ?>
-                
-                <li><a href="section-results.php?idSection = <?php echo $row['id_Section']; ?>"> <?php echo $row['nameSection']; ?> </a></li>
-
+                <li><a href="<?php echo 'section-results.php?idSection=' . $row['id_Section'];?>"> <?php echo $row['nameSection']; ?> </a></li>
                 <?php
             }
         }
@@ -135,7 +133,7 @@
             <?php
             while($row = $resultado->fetch_assoc()){ ?>
                 
-                <li><a href="section-results.php?idSection = <?php echo $row['id_Section']; ?>"> <?php echo $row['nameSection']; ?> </a></li>
+                <li><a href="<?php echo 'section-results.php?idSection=' . $row['id_Section'];?>"> <?php echo $row['nameSection']; ?> </a></li>
 
                 <?php
             }

@@ -12,6 +12,7 @@
         private $phone;
         private $profilePicture; 
         private $firm;
+        private $confirm;
 
         private $objConection;
 
@@ -103,7 +104,22 @@
         /*baja de usuarios*/
         public function Delete_User(){
             $this->objConection->conexion();
-            $query = "CALL usuarios_SP($this->id_Use, '', '', '', '', '', null, '', true, 'DELETE')";
+            $query = "CALL usuarios_SP($this->id_Use, '', '', '', '', '', null, '', 0, 'DELETE')";
+            $resultado = $this->objConection->cone->query($query);
+            if($resultado){
+				$this->objConection->disconnect();
+				return true; 
+			}
+			else{
+				$this->objConection->disconnect();
+				return false; 	
+			}
+        }
+
+        /*Enviar solicitud a usuario para eleminar*/
+        public function Confirm_Delete_User(){
+            $this->objConection->conexion();
+            $query = "CALL usuarios_SP($this->id_Use, '', '', '', '', '', null, '', 0, 'CONFIRM_DELETE')";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
 				$this->objConection->disconnect();
@@ -142,7 +158,23 @@
 				$this->objConection->disconnect();
 				return false;
 			}
-		}
+        }
+        
+        public function get_confirm_status(){
+            $this->objConection->conexion();
+            $query="CALL usuarios_SP($this->id_Use, '', '', '', '', '', '', '', '', 'CONFIRM_STATUS')";
+            $resultado = $this->objConection->cone->query($query);
+            $fila = $resultado->fetch_assoc();
+            if($resultado->num_rows > 0){
+                $this->confirm = $fila['confirm'];
+                $this->objConection->disconnect();
+                return true;
+            }
+            else{
+                $this->objConection->disconnect();
+                return false;
+            }
+        }
 
         /*Get de los atributos*/
         public function getIdUse(){
@@ -168,6 +200,9 @@
         }
         public function getFirm(){
             return $this->firm;
+        }
+        public function getConfirm(){
+            return $this->confirm;
         }
 
 

@@ -100,7 +100,7 @@
             $resultadoVid = $this->objConection->cone->query($queryVid);
             while($rowVid = $resultadoVid->fetch_assoc()){ ?>
 
-                <input type="radio" name="VideoCover" value="<?php echo $rowVid['id_video']; ?>">
+                <input type="radio" name="VideoCover" checked value="<?php echo $rowVid['id_video']; ?>">
                 <label>
                     <video controls width="300" height="150" src="<?php echo "controllers/" . $rowVid['video'];?>"></video>
                 </label>

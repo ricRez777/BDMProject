@@ -24,7 +24,12 @@
     
     }
     else{
-      echo "Acceso denegado";
+      ?>
+        <script>
+          alert("Usuario o contraseña incorrecto");
+        </script>
+      <?php
+      header('Location: ../login.php');
     }
 
 

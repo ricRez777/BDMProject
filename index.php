@@ -15,7 +15,11 @@
 
 <body>
 
-    <?php include("components/header.php"); ?>
+    <?php 
+        include("components/header.php"); 
+        require_once ("models/news.php");
+        $objAllNews = new news(0, '', '', '', '', '', '', '', '', '', '', '');
+    ?>
 
     <div class="container-row">
 
@@ -59,94 +63,7 @@
                 </div>
                 <div class="carousel__container js-carousel-container">
                     <div class="carousel__list js-carousel-list">
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 1</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 2</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 3</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 4</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 5</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 6</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 7</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 8</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
+                        <?php $objAllNews->Breaking_News(); ?>
                     </div>
                 </div>
             </div>
@@ -162,94 +79,7 @@
                 </div>
                 <div class="carousel__container js-carousel-container">
                     <div class="carousel__list js-carousel-list">
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 1</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 2</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 3</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 4</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 5</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 6</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 7</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
-                        <div class="NewsPrev js-carousel-item">
-                            <a href="news.php"><img src="img/newsPrev.jpg" width="250" alt="no image"></a>
-                            <a href="news.php">
-                                <h3>Noticia 8</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate accusamus hic ipsum
-                                inventore
-                                quasi iusto nam fuga velit nisi, veritatis minus, ab consequatur beatae nesciunt. Natus
-                                obcaecati
-                                vel consectetur est.</p>
-                        </div>
+                        <?php $objAllNews->Front_News(); ?>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ create table UserT(
     activo bit(1)
 );
 alter table UserT add firm varchar(100);
+alter table UserT add confirm bit(1);
 ALTER TABLE usert CHANGE profilePicture profilePicture longblob;
 
 create table SectionT(

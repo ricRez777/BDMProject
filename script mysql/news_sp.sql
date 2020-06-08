@@ -32,7 +32,25 @@ BEGIN
         where id_Use = id_UseP;
         
         WHEN "CHANGE_STATUS" THEN 
-        update newst SET statusNews = statusNewsP, publicationDate = now() where id_News = id_NewsP;
+        update newst SET statusNews = statusNewsP, front = frontP, publicationDate = now() where id_News = id_NewsP;
+        
+        WHEN "GET_ALL_BREAKINGNEWS" THEN
+        select N.id_News, N.title, N.descriptionNews, I.image from newst as N
+        inner join imaget as I on N.id_News = I.id_News
+        where statusNews = 'PUBLISHED'  
+        group by N.id_News order by N.id_News DESC limit 6;
+        
+        WHEN "GET_ALL_FRONTNEWS" THEN
+        select N.id_News, N.title, N.descriptionNews, I.image from newst as N
+        inner join imaget as I on N.id_News = I.id_News
+        where statusNews = 'PUBLISHED' AND front = 1
+        group by N.id_News order by N.id_News ASC limit 6;
+        
+        WHEN "GET_ALL_SECTIONSNEWS" THEN
+        select N.id_News, N.title, N.descriptionNews, I.image from newst as N
+        inner join imaget as I on N.id_News = I.id_News
+        where statusNews = 'PUBLISHED' AND N.id_Section = id_SectionP
+        group by N.id_News order by N.id_News DESC;
         
         WHEN "SELECT" THEN 
         select N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.location, N.statusNews, N.keywords, S.nameSection
@@ -112,7 +130,7 @@ CALL news_SP(1, 'Robo a casa', 'Entran delicuentes a casa para robar las pertene
 
 CALL news_SP(1, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'DELETE');
 
-CALL news_SP(1, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'ACTIVE');
+CALL news_SP(59, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'ACTIVE');
 
 CALL news_SP(1, '', '', '', null, null, '', '', 'FINISHED', 0, 0, 0, 0, 'CHANGE_STATUS');
 
@@ -122,15 +140,17 @@ CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 0, 2, 'SELECT_EDITION_
 
 CALL news_SP(10, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT_FINISHED');
 
-CALL news_SP(54, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT');
+CALL news_SP(54, '', '', '', null, null, '', '', '', 0,usuarios_SPusuarios_SP 0, 0, 0, 'SELECT');
 
 CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 0, 2, 'SELECT_FINISHED_ALL_BY_USER');
 
 CALL news_SP(55, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT_PUBLISHED');
 
-select * from newst;
+CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 2, 0, 'GET_ALL_SECTIONSNEWS');
 
-select * from usert;
+select * from newst where statusNews = 'PUBLISHED';
+
+select * from usert;usuarios_SP
 
 
 /*delete from newst where id_News <> 0;*/
