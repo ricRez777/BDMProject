@@ -39,23 +39,17 @@
 
     ?>
     <br>
-    <form action="" method="Post">
-        <h2>Comments</h2>
-        <textarea name="" id="" cols="95" rows="5" placeholder="Leave your comment"></textarea>
+    <div class="commentsList">
+        <?php 
+            $objCommentarys = new commentary(0, '', $_SESSION['idUse'], $objNewShow->getIdNews());
+            $objCommentarys->Get_All_Commentary($objNewShow->getIdUse(), $_SESSION['idUse']);
+        ?>
+    </div>
+    <form action="controllers/commentary_insert.php" method="POST">
+        <h2>Escribre lo que piensas: </h2>
+        <input type="text" hidden name="idNews" value="<?php echo $objNewShow->getIdNews(); ?>">
+        <input type="text" hidden name="idUse" value="<?php echo $_SESSION['idUse']; ?>">
+        <textarea name="textCommentary" id="" cols="95" rows="5" placeholder="Deja un comentario sobre la noticia"></textarea><br>
         <input type="submit" class="btn-Primary" value="comment">
     </form>
-    <div class="commentsList">
-        <div class="commentary">
-            <p><strong>Lolo el de la guitarra</strong></p>
-            <p>El coronavirus es un complot del gobierno para distraernos</p>
-            <button class="btn-Primary btn-Reply">Reply</button>
-            <br>
-            <form hidden class="form-Comment" action="">
-                <textarea name="" id="" cols="60" rows="3" placeholder="Add reply"></textarea>
-                <br>
-                <input type="submit" class="btn-Primary" value="Send">
-            </form>
-            <hr>
-        </div>
-    </div>
 </div>

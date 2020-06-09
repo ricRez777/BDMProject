@@ -59,7 +59,7 @@ BEGIN
         where N.id_News = id_NewsP AND activo = 1;
         
         WHEN "SELECT_PUBLISHED" THEN
-        select N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.publicationDate, N.location, N.statusNews, S.nameSection, U.firm
+        select N.id_Use, N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.publicationDate, N.location, N.statusNews, S.nameSection, U.firm
         from newst as N inner join sectiont as S
         on N.id_Section = S.id_Section inner join usert as U
         on N.id_Use = U.id_Use

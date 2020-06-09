@@ -63,7 +63,7 @@ CALL usuarios_SP(1, 'ADMIN', 'admin@gmail.com', 'admin1234', 'Ricardo Resendez',
 
 CALL usuarios_SP(1, '', '', '', '', '', null, '', true, 'DELETE');
 
-CALL usuarios_SP(1, '', '', '', '', '', null, '', true, 'ACTIVE');
+CALL usuarios_SP(3, '', '', '', '', '', null, '', true, 'ACTIVE');
 
 CALL usuarios_SP(0, '', 'admin@gmail.com', 'admin1234', '', '', null, '', true, 'LOGIN');
 

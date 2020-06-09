@@ -18,6 +18,7 @@
         include("components/header.php"); 
         include("controllers/news_show.php");
         require_once "models/like.php";
+        require_once "models/commentary.php";
     ?>
     <div class="container-row">
 
@@ -71,7 +72,7 @@
                     <br>
                     <br>
                     <p><strong>Publicado el: </strong><?php echo $objNewShow->getPublicationDate(); ?></p>
-                    <p><strong>Escrito por: </strong><?php echo $objNewShow->getIdUse(); ?></p>
+                    <p><strong>Escrito por: </strong><?php echo $objNewShow->getFirm(); ?></p>
                     <br>
                     <hr>
                     <?php include("components/comments.php") ?>

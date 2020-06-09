@@ -18,6 +18,7 @@
         private $front;
         private $id_Section;
         private $id_Use;
+        private $firm;
         
         private $objConection;
         private $objImage;
@@ -122,6 +123,29 @@
                 </div>
 
                 <?php
+            }
+        }
+
+        /*Obtenemos todas las noticas que se promocionan dentro de otra noticia*/
+        public function Breaking_News_Side(){
+            $this->objConection->conexion();
+            $query = "CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 1, 0, 0, 'GET_ALL_BREAKINGNEWS')";
+            $resultado = $this->objConection->cone->query($query);
+            $i = 0;
+            while($row = $resultado->fetch_assoc()){ 
+                if($i<4){
+                ?>
+                <article class="NewsPrev">
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>
+                    <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>">
+                        <h3><?php echo $row['title'];?></h3>
+                    </a>
+                    <p><?php echo $row['descriptionNews']; ?></p>
+                </article>
+
+                <?php
+                $i++;
+                }
             }
         }
 
@@ -234,7 +258,8 @@
                 $this->publicationDate = $row['publicationDate'];
                 $this->location = $row['location'];
                 $this->id_Section = $row['nameSection'];
-                $this->id_Use = $row['firm'];
+                $this->id_Use = $row['id_Use'];
+                $this->firm = $row['firm'];
             }
         }
 
@@ -513,6 +538,9 @@
         }
         public function getIdUse(){
             return $this->id_Use;
+        }
+        public function getFirm(){
+            return $this->firm;
         }
 
 
