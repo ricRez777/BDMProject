@@ -51,7 +51,6 @@
                 include("components/maincategories.php");
                 ?>
             </div>
-
             <!--BREAKING NEWS-->
             <div class="carousel js-carousel">
                 <div class="titleNews">

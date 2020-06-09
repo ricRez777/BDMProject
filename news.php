@@ -17,6 +17,7 @@
     <?php 
         include("components/header.php"); 
         include("controllers/news_show.php");
+        require_once "models/like.php";
     ?>
     <div class="container-row">
 

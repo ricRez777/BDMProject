@@ -226,6 +226,7 @@
             $query = "CALL news_SP($this->id_News, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT_PUBLISHED');";
             $resultado = $this->objConection->cone->query($query);
             while($row = $resultado->fetch_assoc()){
+                $this->id_News = $row['id_News'];
                 $this->title = $row['title'];
                 $this->description = $row['descriptionNews'];
                 $this->textNews = $row['textNews'];

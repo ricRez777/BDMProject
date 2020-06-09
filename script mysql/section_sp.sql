@@ -49,6 +49,8 @@ CALL section_SP(0, '', '', '', '', 'ALL_SECTIONS');
 
 CALL section_SP(3, '', '', '', '', 'DELETE');
 
+CALL section_SP(0, '', '', '', '', 'INDEX_SECTIONS');
+
 select * from sectiont
 
 

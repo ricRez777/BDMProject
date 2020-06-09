@@ -119,8 +119,10 @@
             $resultado = $this->objConection->cone->query($query);
             ?> 
             <?php
+            //<?php echo "border-left: 1, solid," . $row['color'] . ";"
             while($row = $resultado->fetch_assoc()){ ?>
-                <li><a href="<?php echo 'section-results.php?idSection=' . $row['id_Section'];?>"> <?php echo $row['nameSection']; ?> </a></li>
+                <li><a style="<?php echo "border-bottom: 2px solid" . $row['color'] . ";"; ?>" 
+                href="<?php echo 'section-results.php?idSection=' . $row['id_Section'];?>"> <?php echo $row['nameSection']; ?> </a></li>
                 <?php
             }
         }
