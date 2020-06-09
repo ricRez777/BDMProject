@@ -23,7 +23,7 @@ BEGIN
         select id_like, status_like from liket where id_Use = id_UseP AND id_News = id_NewsP;
         
         WHEN "COUNT_LIKE" THEN
-        select count(id_like) as NumLike from liket where id_News = id_NewsP;
+        select count(id_like) as NumLike from liket where id_News = id_NewsP AND status_like = 1;
         
 	END CASE;
 END;

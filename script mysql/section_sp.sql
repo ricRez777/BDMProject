@@ -26,11 +26,10 @@ BEGIN
         update sectiont SET sectiont.activo = 1 where sectiont.id_Section = id_SectionP;
         
         WHEN "ALL_SECTIONS" THEN
-        select id_Section, nameSection, color, activo, main from sectiont where activo = 1;
+        select id_Section, nameSection, color, activo, main from ALL_SECTIONS;
         
         WHEN "INDEX_SECTIONS" THEN
-        select id_Section, nameSection, color, activo, main from sectiont where activo = 1 AND main = 1
-        ORDER BY id_Section DESC LIMIT 8;
+        select id_Section, nameSection, color, activo, main from INDEX_SECTIONS;
         
 	END CASE;
 END;

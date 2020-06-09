@@ -35,10 +35,7 @@ BEGIN
         update newst SET statusNews = statusNewsP, front = frontP, publicationDate = now() where id_News = id_NewsP;
         
         WHEN "GET_ALL_BREAKINGNEWS" THEN
-        select N.id_News, N.title, N.descriptionNews, I.image from newst as N
-        inner join imaget as I on N.id_News = I.id_News
-        where statusNews = 'PUBLISHED' AND N.activo = 1
-        group by N.id_News order by N.id_News DESC limit 6;
+        select id_News, title, descriptionNews, image from GET_ALL_BREAKINGNEWS;
         
         WHEN "GET_ALL_FRONTNEWS" THEN
         select N.id_News, N.title, N.descriptionNews, I.image from newst as N
@@ -97,12 +94,8 @@ BEGIN
         order by N.id_News;
         
         WHEN "SELECT_FINISHED_ALL" THEN
-        select N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.publicationDate, N.location, N.statusNews, S.nameSection, U.firm
-        from newst as N inner join sectiont as S
-        on N.id_Section = S.id_Section inner join usert as U
-        on N.id_Use = U.id_Use
-        where N.statusNews = "FINISHED" AND N.activo = 1
-        order by N.id_News;
+        select id_News, title, descriptionNews, textNews, eventDate, publicationDate, location, statusNews, nameSection, firm
+        from SELECT_FINISHED_ALL;
         
         WHEN "SELECT_FINISHED" THEN
         select N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.publicationDate, N.location, N.statusNews, S.nameSection, U.firm
@@ -118,10 +111,7 @@ BEGIN
         update newst SET activo = 1 where id_News = id_NewsP;
         
         WHEN "GET_ALL_FRONTNEWS" THEN
-        select N.id_News, N.title, N.descriptionNews, I.image from newst as N
-        inner join imaget as I on N.id_News = I.id_News
-        where statusNews = 'PUBLISHED' AND front = 1 AND N.activo =1
-        group by N.id_News order by N.id_News ASC limit 6;
+        select id_News, title, descriptionNews, image from GET_ALL_FRONTNEWS;
         
         WHEN "SEARCH" THEN
         select N.publicationDate, N.id_News, N.title, N.descriptionNews, I.image from newst as N
