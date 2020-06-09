@@ -29,7 +29,7 @@ BEGIN
         WHEN "UPDATE" THEN 
         update newst SET title = titleP, descriptionNews = descriptionP, textNews = textNewsP, eventDate = eventDateP, publicationDate = publicationDateP, 
         location = locationP, keywords = keywordsP, statusNews = statusNewsP, front = frontP, id_Section = id_SectionP
-        where id_Use = id_UseP;
+        where id_News = id_NewsP;
         
         WHEN "CHANGE_STATUS" THEN 
         update newst SET statusNews = statusNewsP, front = frontP, publicationDate = now() where id_News = id_NewsP;
@@ -156,8 +156,9 @@ select * from newst where statusNews = 'PUBLISHED';
 
 CALL news_SP(66, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT');
 
-select * from usert;
+CALL news_SP(69, 'title', 'description', 'textNews', '2020-05-03', NULL, 'Mexico', 'Robp', 'EDITION', 0, 2, 0, 'UPDATE');
 
+/*CALL news_SP($this->id_News, '$this->title', '$this->description', '$this->textNews', '$this->eventDate', now(), '$this->location', '$this->keywords', '$this->statusNews', 0, 1, $this->id_Section, 0, 'UPDATE');*/
 
 /*delete from newst where id_News <> 0;*/
 

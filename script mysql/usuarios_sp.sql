@@ -57,9 +57,10 @@ END;
 |
 
 /*Ejemplo de uso con la cuenta de administrador: */
-CALL usuarios_SP(0, 'ADMIN', 'admin@wnc.com', 'admin1234', 'Ricardo Resendez', '8181627829', null, 'ADMIN', true, 'INSERT');
+CALL usuarios_SP(0, 'ADMIN', 'admin@gmail.com', 'admin1234', 'Ricardo Resendez', '8181627829', null, 'ADMIN', true, 'INSERT');
 
-CALL usuarios_SP(1, 'ADMIN', 'admin@gmail.com', 'admin1234', 'Ricardo Resendez', '8181627829', null, 'ADMIN', true, 'UPDATE');
+/*Ejemplo de insert de reportero*/
+CALL usuarios_SP(0, 'JOURNALIST', 'admin@wnc.com', 'admin1234', 'Ricardo Resendez', '8181627829', null, 'ADMIN', true, 'INSERT');
 
 CALL usuarios_SP(1, '', '', '', '', '', null, '', true, 'DELETE');
 

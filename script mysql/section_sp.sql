@@ -36,9 +36,9 @@ END;
 |
 
 /*Ejemplo de uso con la cuenta de administrador: */
-CALL section_SP(0, 'Tecnologia', '5B4945', 1, 1, 'INSERT');
+CALL section_SP(0, 'Tecnologia', '#5B4945', 1, 1, 'INSERT');
 
-CALL section_SP(1, 'Tecnologia', '#18ABD3', 1, 1, 'UPDATE');
+CALL section_SP(0, 'Politica', '18ABD3', 1, 1, 'INSERT');
 
 CALL section_SP(1, '', '', '', '', 'DELETE');
 
