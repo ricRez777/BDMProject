@@ -229,7 +229,7 @@
             $query = "CALL news_SP(0, '', '', '$this->textNews', null, null, '', '', '', 0, 0, '', 0, 'SEARCH');";
             $resultado = $this->objConection->cone->query($query);
             while($row = $resultado->fetch_assoc()){ 
-                if($row['publicationDate'] >= $fecha1 || $row['publicationDate'] <= $fecha1){
+                if($row['publicationDate'] >= $fecha1 && $row['publicationDate'] <= $fecha2){
                 ?>
                 <article class="NewsPrev">
                 <a href="<?php echo 'news.php?idNew=' . $row['id_News'];?>"><img src="<?php echo "controllers/" . $row['image']; ?>" width="250" alt="no image"></a>

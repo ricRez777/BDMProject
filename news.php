@@ -75,7 +75,11 @@
                     <p><strong>Escrito por: </strong><?php echo $objNewShow->getFirm(); ?></p>
                     <br>
                     <hr>
-                    <?php include("components/comments.php") ?>
+                    <?php 
+                        if( isset($_SESSION['idUse'])){
+                            include("components/comments.php");
+                        }
+                    ?>
                 </div>
                 <?php include("components/breakingNews.php") ?>
             </div>

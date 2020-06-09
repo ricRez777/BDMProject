@@ -46,7 +46,7 @@
             </div>
             
             <br>
-            <h3>Name Section</h3>
+            <!--<h3>Name Section</h3>-->
             <section class="containerNewsPrev">
                 <?php $objNewsSection->Sections_News_All(); ?>
             </section>
