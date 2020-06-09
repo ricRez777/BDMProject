@@ -65,14 +65,15 @@
         /*modificacion de noticias*/
         public function Update_News(){
             $this->objConection->conexion();
-            $query = "CALL news_SP($this->id_News, '$this->title', '$this->description', '$this->textNews', $this->eventDate, $this->publicationDate, '$this->location', '$this->keywords', '$this->statusNews', $this->front, 1, $this->id_Section, $this->id_Use, 'UPDATE')";
+            $query = "CALL news_SP($this->id_News, '$this->title', '$this->description', '$this->textNews', '$this->eventDate', now(), '$this->location', '$this->keywords', '$this->statusNews', 0, 1, $this->id_Section, 0, 'UPDATE');";
             $resultado = $this->objConection->cone->query($query);
             if($resultado){
 				$this->objConection->disconnect();
 				return true; 
 			}
 			else{
-				$this->objConection->disconnect();
+                $this->objConection->disconnect();
+                echo "No se ejecuto el query";
 				return false; 	
 			}
         }
@@ -303,14 +304,14 @@
                     <p><span><strong>Edit by: </strong></span><?php echo $row['firm']; ?></p>
                     
                     <form action="news_edit.php" style="width:50%;" method="post">
-                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <input type="text" hidden value="<?php echo $row['id_News']; ?>" name="idNew">
                         <div class="row">
                             <input type="submit" class="btn-Primary" value="Edit">
                         </div>
                     </form>
                     <br>
                     <form action="controllers/news_delete.php" style="width:50%;" method="post">
-                        <input type="text" value="<?php echo $row['id_News']; ?>" hidden name="idNew">
+                        <input type="text" hidden value="<?php echo $row['id_News']; ?>" name="idNew">
                         <div class="row">
                             <input type="submit" class="btn-Primary" value="Delete">
                         </div>
@@ -432,9 +433,12 @@
             $resultado = $this->objConection->cone->query($query);
             while($row = $resultado->fetch_assoc()){ ?>
 
-                <form action="controllers/news_insert.php" method="post" class="formRegisterNews" enctype="multipart/form-data">
+                <form action="controllers/news_update.php" method="post" class="formRegisterNews" enctype="multipart/form-data">
                     <div class="divInputs">
                         <h2>Writing the news...</h2><br>
+
+                        <input type="text" hidden name="id_News" value="<?php echo $row['id_News']; ?>">
+
                         <label for="txtTitle">Title</label>
                         <input type="text" required name="txtTitle" placeholder="Title" class="formText" value="<?php echo $row['title']; ?>">
 
@@ -478,19 +482,6 @@
                         </p>
                         
                         <br>
-
-                        <label for="images[]"> <strong>IMAGES</strong> *Solo se aceptan archivos JPG* </label>
-                        <div class="row-container">
-                            <div id="add-photo-container">
-                                <div class="add-new-photo first" id="add-photo">
-                                    <span><i class="icon-camera"></i></span>
-                                </div>
-                                <input type="file" required multiple id="add-new-photo" accept=".jpg" name="images[]">
-                            </div>
-                        </div>
-                        <br>
-                        <label for="videos"> <strong>VIDEOS</strong> *Solo se aceptan archivos MP4* </label>
-                        <input type="file" required name="videos[]" accept=".mp4" multiple class="formText">
 
                     </div>
                     <div class="divInputs">

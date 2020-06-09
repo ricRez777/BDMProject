@@ -24,7 +24,7 @@ BEGIN
     
 		WHEN "INSERT" THEN 
         insert into newst(title, descriptionNews, textNews, eventDate, publicationDate, location, keywords, statusNews, front, activo, id_Section, id_Use) 
-        values (titleP, descriptionP, textNewsP, eventDateP, publicationDateP, locationP, keywordsP, statusNewsP, frontP, activoP, id_SectionP, id_UseP);
+        values (titleP, descriptionP, textNewsP, eventDateP, null, locationP, keywordsP, statusNewsP, frontP, activoP, id_SectionP, id_UseP);
         
         WHEN "UPDATE" THEN 
         update newst SET title = titleP, descriptionNews = descriptionP, textNews = textNewsP, eventDate = eventDateP, publicationDate = publicationDateP, 
@@ -53,7 +53,7 @@ BEGIN
         select N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.location, N.statusNews, N.keywords, S.nameSection
         from newst as N inner join sectiont as S
         on N.id_Section = S.id_Section
-        where N.id_News = id_NewsP AND activo = 1;
+        where N.id_News = id_NewsP AND N.activo = 1;
         
         WHEN "SELECT_PUBLISHED" THEN
         select N.id_Use, N.id_News, N.title, N.descriptionNews, N.textNews, N.eventDate, N.publicationDate, N.location, N.statusNews, S.nameSection, U.firm
@@ -153,6 +153,8 @@ CALL news_SP(0, '', '', '', null, null, '', '', '', 0, 0, 2, 0, 'GET_ALL_SECTION
 CALL news_SP(0, '', '', 'peligros', null, null, '', '', '', 0, 0, '', 0, 'SEARCH');
 
 select * from newst where statusNews = 'PUBLISHED';
+
+CALL news_SP(66, '', '', '', null, null, '', '', '', 0, 0, 0, 0, 'SELECT');
 
 select * from usert;
 

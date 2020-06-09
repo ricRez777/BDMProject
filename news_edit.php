@@ -21,7 +21,7 @@
     <?php 
         include("components/header.php"); 
         require_once ("models/news.php");
-        $objNewsEdit = new news(null, '', '', '', null, null, '', '', '', null, null, $_SESSION['idUse']);
+        $objNewsEdit = new news($_POST['idNew'], '', '', '', null, null, '', '', '', null, null, $_SESSION['idUse']);
     ?>
     <div class="container-row">
         
